@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{CJKutf8}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{caption}
+\usepackage{bm}
+\captionsetup{font={scriptsize}}
+\begin{CJK}{UTF8}{gbsn}
+\begin{document}
+
+\title{formula in PRB. 88, 220406(R) (2013)}
+\author{Li Gaoyang}
+%\date{\today}
+\date{\today}
+\maketitle
+\tableofcontents
+
+% \newpage
+\section{formula 1}
+system Hamiltonion:
+\begin{equation}
+H=H_{L}+H_{R}+H_{s d}.
+\end{equation}
+Left lead is metallic
+\begin{equation}
+H_{L} = \sum_{k\sigma} \left(\varepsilon_{k\sigma}-\mu_{\sigma}\right) c_{k \sigma}^{\dagger} c_{k \sigma},
+\end{equation}
+right lead is insulating magnetic
+\begin{equation}
+H_{R} \approx \sum_{q} \hbar w_{q} a_{q}^{\dagger} a_{q}+\text { constant }.
+\end{equation}
+The interfacial electron-magnon interaction is described by
+\begin{equation}
+H_{s d}=-\sum_{k, q} J_{q}\left[S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q \downarrow}+S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right]
+\end{equation}
+where $S_{q}^{-} \approx \sqrt{2 S_{0}} a_{q}^{\dagger}, S_{q}^{+} \approx \sqrt{2 S_{0}} a_{q}$ are in the momentum space and $J_{q}$ denotes the effective exchange coupling at the interface. The magnonic spin current can be obtained by
+\begin{equation}
+I_{S} = \frac{d}{dt} \langle \sum_{q}a_{q}^{\dag}a_{q}\rangle.
+\end{equation}
+Using the Heisenberg equation, we get
+\begin{equation}
+I_{S}=\frac{i}{\hbar}\langle[H_{s d}, \sum_{q} a_{q}^{\dagger} a_{q}]\rangle.
+\end{equation}
+\begin{equation}
+[H_{s d}, \sum_{q} a_{q}^{\dagger} a_{q}] = [-\sum_{k, q} J_{q}\left(S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q \downarrow}+S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right), \sum_{q} a_{q}^{\dagger} a_{q}],
+\end{equation}
+in which,
+\begin{equation}
+[a_{q}^{\dag}, \sum_{q^{\prime}} a_{q'}^{\dagger}, a_{q^{\prime}}] = \delta_{q q^{\prime}}[a_{q}^{\dagger}, a_{q^{\prime}}^{\dagger} a_{q^{\prime}}] = [a_{q}^{\dagger}, a_{q}^{\dagger} a_{q}] = a_{q}^{\dagger}[a_{q}^{\dagger}, a_{q}] = - a_{q}^{\dagger}.
+\end{equation}
+Similarly,
+\begin{equation}
+[a_{q}, \sum_{q^{\prime}} a_{q^{\prime}}^{+} a_{q^{\prime}}]=[a_{q}, a_{q}^{\dagger} a_{q}]=a_{q}.
+\label{eq:1-1}
+\end{equation}
+So,
+\begin{equation}
+\begin{split}
+I_{S}&=\frac{i}{\hbar}\langle -\sum_{k q} J_{q}\left(-S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q\downarrow} + S_{q}^{+} c_{k+q\downarrow}^{\dagger} c_{k \uparrow}\right) \rangle \\
+&= \frac{i}{\hbar} \sum_{k q} J_{q}\left( \langle S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q\downarrow}\rangle - \langle S_{q}^{+} c_{k+q\downarrow}^{\dagger} c_{k \uparrow}\rangle \right).
+\end{split}
+\end{equation}
+\section{formula 2}
+\begin{equation}
+\frac{d}{d t}\left\langle S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right\rangle=\frac{i}{\hbar}\left\langle\left[H_{L}+H_{s d}+H_{R}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right]\right\rangle.
+\label{eq:2-1}
+\end{equation}
+The rhs. of eq. (\ref{eq:2-1}) is decomposed into 3 terms. The first term reads
+\begin{equation}
+\begin{split}
+\left\langle\left[H_{L}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right]\right\rangle &= [\sum_{k'\sigma}\left(\varepsilon_{k^{\prime}\sigma}-\mu_{\sigma}\right) c_{k' \sigma}^{\dagger} c_{k' \sigma}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}] \\
+&= S_{q}^{+} [\sum_{k'\sigma}\left(\varepsilon_{k^{\prime}\sigma}-\mu_{\sigma}\right) c_{k' \sigma}^{\dagger} c_{k' \sigma}, c_{k+q \downarrow}^{\dagger}]c_{k \uparrow} \\
+&\quad + S_{q}^{+}c_{k+q \downarrow}^{\dagger}[\sum_{k'\sigma}\left(\varepsilon_{k^{\prime}\sigma}-\mu_{\sigma}\right) c_{k' \sigma}^{\dagger} c_{k' \sigma}, c_{k \uparrow}]
+\end{split}
+\end{equation}
+Note that,
+\begin{equation}
+[\sum_{k^{\prime} \sigma} c_{k^{\prime} \sigma}^{\dag} c_{k^{\prime} \sigma}, c_{k+q \downarrow}^{\dagger}] = \sum_{k'\sigma} c_{k'\sigma}^{\dag}\delta_{k',k+q}\delta_{\sigma\downarrow} = c_{k+q\downarrow}^{\dag},
+\label{eq:2-2}
+\end{equation}
+\begin{equation}
+[\sum_{k^{\prime} \sigma} c_{k^{\prime} \sigma}^{\dag} c_{k^{\prime} \sigma}, c_{k \uparrow}] = - \sum_{k^{\prime} \sigma} \{c_{k'\sigma}^{\dag}, c_{k\uparrow}\}c_{k'\sigma} = - c_{k\uparrow}.
+\label{eq:2-3}
+\end{equation}
+Eq. (\ref{eq:2-2}) (\ref{eq:2-3}) are derived using equity
+\begin{equation}
+\begin{split}
+[AB, C] &= A[B, C] + [A, C]B \\
+&= A\{B, C\} - \{A, C\}B.
+\end{split}
+\end{equation}
+So,
+\begin{equation}
+\begin{split}
+\left[H_{L}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right] &= \left(\varepsilon_{k+q \downarrow}-\varepsilon_{k \uparrow}+\mu_{\uparrow}-\mu_{\downarrow}\right)S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}.
+\end{split}
+\label{eq:1-0}
+\end{equation}
+If $\mu_{\uparrow} = \mu_{\downarrow}$, then eq. (\ref{eq:1-0}) reduces to
+\begin{equation}
+\begin{split}
+\left[H_{L}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right] &= \left(\varepsilon_{k+q \downarrow}-\varepsilon_{k \uparrow}\right)S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}.
+\end{split}
+\label{eq:1-01}
+\end{equation}
+The second term $H_{R} = \sum_{q} \hbar w_{q} a_{q}^{\dagger} a_{q}$, then using eq. (\ref{eq:1-1}), we get
+\begin{equation}
+\left[H_{R}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right] = -\hbar \omega_{q}S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}.
+\end{equation}
+The third term in eq. (\ref{eq:2-1}) reads
+\begin{equation}
+\begin{split}
+\left[H_{sd}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right] &= - J_{q} \left[S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q \downarrow}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right] \\
+&= J_{q} \left[S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}, S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q \downarrow}\right]
+\end{split}
+\end{equation}
+Combine these three terms, we get
+\begin{equation}
+\begin{split}
+\frac{d}{d t}\left\langle S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right\rangle&=\frac{i}{\hbar}\left(\varepsilon_{k+q \downarrow}-\varepsilon_{k \uparrow}-\hbar \omega_{q}\right)\left\langle S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right\rangle\\ 
+&\quad + \frac{i}{\hbar} J_{q}\left\langle\left[S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}, S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q \downarrow}\right]\right\rangle
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+\end{CJK}
+\end{document}
