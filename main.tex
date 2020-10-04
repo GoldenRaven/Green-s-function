@@ -9,16 +9,18 @@
 \begin{CJK}{UTF8}{gbsn}
 \begin{document}
 
-\title{formula in PRB. 88, 220406(R) (2013)}
-\author{Li Gaoyang}
-%\date{\today}
-\date{\today}
+\title{Formulas in PRB. 88, 220406(R) (2013)}
+% \author{Li Gaoyang}
+\date{}
 \maketitle
-\tableofcontents
+% \tableofcontents
 
 % \newpage
-\section{formulas in PRB. 88, 220406(R) (2013)}
-\subsection{formula 1}
+% \section{Basics}
+% \subsection{Magnon}
+% A magnon is a quasiparticle, a collective excitation of the electrons' spin structure in a crystal lattice. In the equivalent wave picture of quantum mechanics, a magnon can be viewed as a quantized spin wave. Magnons carry a fixed amount of energy and lattice momentum, and are spin-1, indicating they obey boson behavior.
+% \section{formulas in PRB. 88, 220406(R) (2013)}
+\section{Formula (1)}
 System Hamiltonion:
 \begin{equation}
 H=H_{L}+H_{R}+H_{s d}.
@@ -66,7 +68,7 @@ I_{S}&=\frac{i}{\hbar}\langle -\sum_{k q} J_{q}\left(-S_{q}^{-} c_{k \uparrow}^{
 &= \frac{i}{\hbar} \sum_{k q} J_{q}\left( \langle S_{q}^{-} c_{k \uparrow}^{\dagger} c_{k+q\downarrow}\rangle - \langle S_{q}^{+} c_{k+q\downarrow}^{\dagger} c_{k \uparrow}\rangle \right).
 \end{split}
 \end{equation}
-\subsection{formula 2}
+\section{Formula (2)}
 \begin{equation}
 \frac{d}{d t}\left\langle S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right\rangle=\frac{i}{\hbar}\left\langle\left[H_{L}+H_{s d}+H_{R}, S_{q}^{+} c_{k+q \downarrow}^{\dagger} c_{k \uparrow}\right]\right\rangle.
 \label{eq:2-1}
@@ -129,182 +131,182 @@ Combine these three terms, we get
 \end{equation}
 which is also eq. (2) in PRB. 88, 220406(R) (2013).
 
-\section{NM-QD-MIL system}
-For system consists of quantum dot(QD) sandwiched by a left normal metal lead and a right magnetic insulating lead(MIL), the Hamiltonian is
-\begin{equation}
-H=H_{\rm{L}}+H_{\rm{QD}}+H_{\rm{R}}+H_{\rm{T}}.
-\end{equation}
+% \section{NM-QD-MIL system}
+% For system consists of quantum dot(QD) sandwiched by a left normal metal lead and a right magnetic insulating lead(MIL), the Hamiltonian is
+% \begin{equation}
+% H=H_{\rm{L}}+H_{\rm{QD}}+H_{\rm{R}}+H_{\rm{T}}.
+% \end{equation}
 
-\begin{equation}
-H_{\rm{L}} = \sum_{k\sigma} \varepsilon_{k\sigma} c_{k \sigma}^{\dagger} c_{k \sigma},
-\end{equation}
+% \begin{equation}
+% H_{\rm{L}} = \sum_{k\sigma} \varepsilon_{k\sigma} c_{k \sigma}^{\dagger} c_{k \sigma},
+% \end{equation}
 
-\begin{equation}
-H_{\rm{QD}} = \sum_{\sigma}\varepsilon_{\sigma} d_{\sigma}^{\dagger} d_{\sigma},
-\end{equation}
+% \begin{equation}
+% H_{\rm{QD}} = \sum_{\sigma}\varepsilon_{\sigma} d_{\sigma}^{\dagger} d_{\sigma},
+% \end{equation}
 
-\begin{equation}
-H_{\rm{R}} \approx \sum_{q} \hbar w_{q} a_{q}^{\dagger} a_{q},
-\end{equation}
+% \begin{equation}
+% H_{\rm{R}} \approx \sum_{q} \hbar w_{q} a_{q}^{\dagger} a_{q},
+% \end{equation}
 
-\begin{equation}
-H_{\rm{T}} = V_{\rm{L}} + V_{\rm{R}}
-\end{equation}
-V$_{L}$ is the coupling between left lead and QD, while V$_{R}$ is the coupling between right lead and QD.
-\begin{equation}
-V_{\rm{L}} = \sum_{k\sigma}( t_{k\sigma} c_{k \sigma}^{\dagger} d_{\sigma} + t_{k\sigma}^{*} d_{\sigma}^{\dagger} c_{k\sigma})
-\end{equation}
+% \begin{equation}
+% H_{\rm{T}} = V_{\rm{L}} + V_{\rm{R}}
+% \end{equation}
+% V$_{L}$ is the coupling between left lead and QD, while V$_{R}$ is the coupling between right lead and QD.
+% \begin{equation}
+% V_{\rm{L}} = \sum_{k\sigma}( t_{k\sigma} c_{k \sigma}^{\dagger} d_{\sigma} + t_{k\sigma}^{*} d_{\sigma}^{\dagger} c_{k\sigma})
+% \end{equation}
 
-\begin{equation}
-V_{\rm{R}}=-\sum_{q} J_{q}\left[S_{q}^{-} d_{\uparrow}^{\dagger} d_{\downarrow}+S_{q}^{+} d_{\downarrow}^{\dagger} d_{\uparrow}\right].
-\end{equation}
+% \begin{equation}
+% V_{\rm{R}}=-\sum_{q} J_{q}\left[S_{q}^{-} d_{\uparrow}^{\dagger} d_{\downarrow}+S_{q}^{+} d_{\downarrow}^{\dagger} d_{\uparrow}\right].
+% \end{equation}
 
-where $S_{q}^{-} \approx \sqrt{2 S_{0}} a_{q}^{\dagger}, S_{q}^{+} \approx \sqrt{2 S_{0}} a_{q}$ are in the momentum space and $J_{q}$ denotes the effective exchange coupling between the QD and MIL.
-\subsection{Spin-dependent current in left lead}
-The spin-dependent current flow out of left lead is $I_{L\sigma}$:
-\begin{equation}
-I_{L\sigma} = \frac{d}{dt} \langle N_{L\sigma} \rangle
-\end{equation}
-in which, $N_{L\sigma} = \sum_{k} c_{k\sigma}^{\dag}c_{k\sigma}$
-Heisenberg equation:
-\begin{equation}
-\frac{d}{dt} \langle N_{L\sigma} \rangle = \frac{i}{\hbar} \langle [H, N_{L\sigma}]\rangle
-\end{equation}
+% where $S_{q}^{-} \approx \sqrt{2 S_{0}} a_{q}^{\dagger}, S_{q}^{+} \approx \sqrt{2 S_{0}} a_{q}$ are in the momentum space and $J_{q}$ denotes the effective exchange coupling between the QD and MIL.
+% \subsection{Spin-dependent current in left lead}
+% The spin-dependent current flow out of left lead is $I_{L\sigma}$:
+% \begin{equation}
+% I_{L\sigma} = \frac{d}{dt} \langle N_{L\sigma} \rangle
+% \end{equation}
+% in which, $N_{L\sigma} = \sum_{k} c_{k\sigma}^{\dag}c_{k\sigma}$
+% Heisenberg equation:
+% \begin{equation}
+% \frac{d}{dt} \langle N_{L\sigma} \rangle = \frac{i}{\hbar} \langle [H, N_{L\sigma}]\rangle
+% \end{equation}
 
-\begin{equation}
-[H, N_{L\sigma}] = [H_{T}, N_{L\sigma}] =  \sum_{k}\left(t_{k \sigma}^{*} d_{\sigma}^{\dagger} c_{k \sigma} - t_{k \sigma} c_{k \sigma}^{\dagger} d_{\sigma} \right)
-\end{equation}
-so, the spin-dependent current
-\begin{equation}
-I_{L\sigma} = \frac{i}{\hbar} \sum_{k} \left( t_{k \sigma}^{*} \langle  d_{\sigma}^{\dagger} c_{k \sigma}\rangle - t_{k \sigma} \langle c_{k \sigma}^{\dagger} d_{\sigma} \rangle \right).
-\end{equation}
-Namely, the spin-up current is
-\begin{equation}
-I_{L\uparrow} = \frac{i}{\hbar} \sum_{k} \left( t_{k \uparrow}^{*} \langle  d_{\uparrow}^{\dagger} c_{k \uparrow}\rangle - t_{k \uparrow} \langle c_{k \uparrow}^{\dagger} d_{\uparrow} \rangle \right),
-\end{equation}
-the spin-down current is
-\begin{equation}
-I_{L\downarrow} = \frac{i}{\hbar} \sum_{k} \left( t_{k \downarrow}^{*} \langle  d_{\downarrow}^{\dagger} c_{k \downarrow}\rangle - t_{k \downarrow} \langle c_{k \downarrow}^{\dagger} d_{\downarrow} \rangle \right),
-\end{equation}
-The charge current in left lead is defined as
-\begin{equation}
-I_{e} = e(I_{L\uparrow} + I_{L\downarrow}).
-\end{equation}
-The spin current in left lead is defined as
-\begin{equation}
-I_{LS} = \frac{1}{2}(I_{L\uparrow} - I_{L\downarrow})
-\end{equation}
-Substitute the spin-dependent current in, we get the spin current in left lead
-\begin{equation}
-I_{LS} = \frac{i}{2\hbar} \sum_{k} \left( t_{k \uparrow}^{*} \langle  d_{\uparrow}^{\dagger} c_{k \uparrow}\rangle - t_{k \uparrow} \langle c_{k \uparrow}^{\dagger} d_{\uparrow} \rangle -  t_{k \downarrow}^{*} \langle  d_{\downarrow}^{\dagger} c_{k \downarrow}\rangle + t_{k \downarrow} \langle c_{k \downarrow}^{\dagger} d_{\downarrow} \rangle \right)
-\end{equation}
-\subsection{magnonic current in right lead}
-The magnonic current in right lead is
-\begin{equation}
-I_{RS} = \frac{d\langle N_{R}\rangle}{dt} =  \frac{d}{dt} \langle \sum_{q}a_{q}^{\dag}a_{q}\rangle,
-\end{equation}
-From the Heisenberg equation, we have
-\begin{equation}
-\frac{d}{dt} \langle \sum_{q}a_{q}^{\dag}a_{q}\rangle = \frac{i}{\hbar} \langle [H, \sum_{q}a_{q}^{\dag}a_{q}] \rangle.
-\end{equation}
-We have
-\begin{equation}
-\begin{split}
-&[H, \sum_{q}a_{q}^{\dag}a_{q}] \\
-= &[V_{R}, \sum_{q}a_{q}^{\dag}a_{q}]\\
-= &-\sum_{q} J_{q} \Big(\big[S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}, \sum_{q'}a_{q'}^{\dag}a_{q'}\big] + \big[S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow}, \sum_{q'}a_{q'}^{\dag}a_{q'}\big]\Big) \\
-= & \sum_{q} J_{q} \big( S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow} - S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big)
-\end{split}
-\end{equation}
-So, the magnon current reads
-\begin{equation}
-I_{RS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
-\end{equation}
+% \begin{equation}
+% [H, N_{L\sigma}] = [H_{T}, N_{L\sigma}] =  \sum_{k}\left(t_{k \sigma}^{*} d_{\sigma}^{\dagger} c_{k \sigma} - t_{k \sigma} c_{k \sigma}^{\dagger} d_{\sigma} \right)
+% \end{equation}
+% so, the spin-dependent current
+% \begin{equation}
+% I_{L\sigma} = \frac{i}{\hbar} \sum_{k} \left( t_{k \sigma}^{*} \langle  d_{\sigma}^{\dagger} c_{k \sigma}\rangle - t_{k \sigma} \langle c_{k \sigma}^{\dagger} d_{\sigma} \rangle \right).
+% \end{equation}
+% Namely, the spin-up current is
+% \begin{equation}
+% I_{L\uparrow} = \frac{i}{\hbar} \sum_{k} \left( t_{k \uparrow}^{*} \langle  d_{\uparrow}^{\dagger} c_{k \uparrow}\rangle - t_{k \uparrow} \langle c_{k \uparrow}^{\dagger} d_{\uparrow} \rangle \right),
+% \end{equation}
+% the spin-down current is
+% \begin{equation}
+% I_{L\downarrow} = \frac{i}{\hbar} \sum_{k} \left( t_{k \downarrow}^{*} \langle  d_{\downarrow}^{\dagger} c_{k \downarrow}\rangle - t_{k \downarrow} \langle c_{k \downarrow}^{\dagger} d_{\downarrow} \rangle \right),
+% \end{equation}
+% The charge current in left lead is defined as
+% \begin{equation}
+% I_{e} = e(I_{L\uparrow} + I_{L\downarrow}).
+% \end{equation}
+% The spin current in left lead is defined as
+% \begin{equation}
+% I_{LS} = \frac{1}{2}(I_{L\uparrow} - I_{L\downarrow})
+% \end{equation}
+% Substitute the spin-dependent current in, we get the spin current in left lead
+% \begin{equation}
+% I_{LS} = \frac{i}{2\hbar} \sum_{k} \left( t_{k \uparrow}^{*} \langle  d_{\uparrow}^{\dagger} c_{k \uparrow}\rangle - t_{k \uparrow} \langle c_{k \uparrow}^{\dagger} d_{\uparrow} \rangle -  t_{k \downarrow}^{*} \langle  d_{\downarrow}^{\dagger} c_{k \downarrow}\rangle + t_{k \downarrow} \langle c_{k \downarrow}^{\dagger} d_{\downarrow} \rangle \right)
+% \end{equation}
+% \subsection{magnonic current in right lead}
+% The magnonic current in right lead is
+% \begin{equation}
+% I_{RS} = \frac{d\langle N_{R}\rangle}{dt} =  \frac{d}{dt} \langle \sum_{q}a_{q}^{\dag}a_{q}\rangle,
+% \end{equation}
+% From the Heisenberg equation, we have
+% \begin{equation}
+% \frac{d}{dt} \langle \sum_{q}a_{q}^{\dag}a_{q}\rangle = \frac{i}{\hbar} \langle [H, \sum_{q}a_{q}^{\dag}a_{q}] \rangle.
+% \end{equation}
+% We have
+% \begin{equation}
+% \begin{split}
+% &[H, \sum_{q}a_{q}^{\dag}a_{q}] \\
+% = &[V_{R}, \sum_{q}a_{q}^{\dag}a_{q}]\\
+% = &-\sum_{q} J_{q} \Big(\big[S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}, \sum_{q'}a_{q'}^{\dag}a_{q'}\big] + \big[S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow}, \sum_{q'}a_{q'}^{\dag}a_{q'}\big]\Big) \\
+% = & \sum_{q} J_{q} \big( S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow} - S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big)
+% \end{split}
+% \end{equation}
+% So, the magnon current reads
+% \begin{equation}
+% I_{RS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
+% \end{equation}
 
-\subsection{spin-dependent current in QD}
-Similarly, the spin-dependent current in the central QD is defined as
-\begin{equation}
-I_{C\sigma} = \langle\frac{dN_{C\sigma}}{dt} \rangle= \langle  \frac{d}{dt} d_{\sigma}^{\dag}d_{\sigma}\rangle,
-\end{equation}
-Heisenberg equation:
-\begin{equation}
-\frac{d}{dt} d_{\sigma}^{\dag}d_{\sigma} = \frac{i}{\hbar} [H, d_{\sigma}^{\dag}d_{\sigma}].
-\end{equation}
-Specifically, we have
-\begin{equation}
- [H, d_{\sigma}^{\dag}d_{\sigma}] = [V_{L},  d_{\sigma}^{\dag}d_{\sigma}] + [V_{R},  d_{\sigma}^{\dag}d_{\sigma}]
-\end{equation}
-in which,
-\begin{equation}
-\begin{split}
-[V_{L},  d_{\sigma}^{\dag}d_{\sigma}] &= \sum_{k'\sigma'}\big(t_{k'\sigma'} \big[c_{k'\sigma'}^{\dag}d_{\sigma'},  d_{\sigma}^{\dag}d_{\sigma}\big] + t_{k'\sigma'}^{*} \big[d_{\sigma'}^{\dag}c_{k'\sigma'},  d_{\sigma}^{\dag}d_{\sigma}\big] \big) \\
-&  = \sum_{k'\sigma'}\big(t_{k'\sigma'} c_{k'\sigma'}^{\dag}d_{\sigma'}\delta_{\sigma\sigma'} - t_{k'\sigma'}^{*} d_{\sigma'}^{\dag}c_{k'\sigma'} \delta_{\sigma\sigma'}\big) \\
-&= \sum_{k}\big(t_{k\sigma} c_{k\sigma}^{\dag}d_{\sigma} - t_{k\sigma}^{*} d_{\sigma}^{\dag}c_{k\sigma} \big)
-\end{split}
-\end{equation}
-We change the summation index from $k'$ to $k$ in the last line , which doesn't change the result.
-\begin{equation}
-[V_{R},  d_{\sigma}^{\dag}d_{\sigma}] = -\sum_{q}J_{q}\big( S_{q}^{-} \big[d_{\uparrow}^{\dag}d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma} \big] + S_{q}^{+}\big[d_{\downarrow}^{\dag}d_{\uparrow}, d_{\sigma}^{\dag}d_{\sigma} \big]\big)
-\end{equation}
-in which,
-\begin{equation}
-\begin{split}
-\big[d_{\uparrow}^{\dag}d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma} \big] &= d_{\uparrow}^{\dag} \big[d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma}\big] + \big[d_{\uparrow}^{\dag} , d_{\sigma}^{\dag}d_{\sigma} \big]d_{\downarrow} \\
-&=d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \downarrow} - d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \uparrow}
-\end{split}
-\end{equation}
-So,
-\begin{equation}
-[V_{R},  d_{\sigma}^{\dag}d_{\sigma}] =  -\sum_{q}J_{q}\big[ S_{q}^{-} \big( d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \downarrow} - d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \uparrow} \big) + S_{q}^{+}\big(d_{\downarrow}^{\dag}d_{\uparrow}\delta_{\sigma \uparrow} - d_{\downarrow}^{\dag}d_{\uparrow}\delta_{\sigma \downarrow} \big)\big]
-\end{equation}
-The spin-dependent current is
-\begin{eqnarray}
-I_{C\uparrow} = \frac{i}{\hbar}\big[ H, d_{\uparrow}^{\dag} d_{\uparrow} \big]
-\\
-I_{C\downarrow} = \frac{i}{\hbar}\big[ H, d_{\downarrow}^{\dag} d_{\downarrow} \big]
-\end{eqnarray}
-which gives
-\begin{equation}
-I_{C\uparrow} = \frac{i}{\hbar} \big[ \sum_{k}\big(t_{k\uparrow} c_{k\uparrow}^{\dag}d_{\uparrow} - t_{k\uparrow}^{*} d_{\uparrow}^{\dag}c_{k\uparrow} \big) + \sum_{q}J_{q}\big( S_{q}^{-} d_{\uparrow}^{\dag}d_{\downarrow} - S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big)\big]
-\end{equation}
-and
-\begin{equation}
-I_{C\downarrow} = \frac{i}{\hbar} \big[ \sum_{k}\big(t_{k\downarrow} c_{k\downarrow}^{\dag}d_{\downarrow} - t_{k\downarrow}^{*} d_{\downarrow}^{\dag}c_{k\downarrow} \big) + \sum_{q}J_{q}\big(S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} -  S_{q}^{-} d_{\uparrow}^{\dag}d_{\downarrow} \big)\big].
-\end{equation}
-The spin current in central dot is
-\begin{equation}
-I_{CS} = \frac{1}{2}(I_{C\uparrow} - I_{C\downarrow})
-\end{equation}
+% \subsection{spin-dependent current in QD}
+% Similarly, the spin-dependent current in the central QD is defined as
+% \begin{equation}
+% I_{C\sigma} = \langle\frac{dN_{C\sigma}}{dt} \rangle= \langle  \frac{d}{dt} d_{\sigma}^{\dag}d_{\sigma}\rangle,
+% \end{equation}
+% Heisenberg equation:
+% \begin{equation}
+% \frac{d}{dt} d_{\sigma}^{\dag}d_{\sigma} = \frac{i}{\hbar} [H, d_{\sigma}^{\dag}d_{\sigma}].
+% \end{equation}
+% Specifically, we have
+% \begin{equation}
+%  [H, d_{\sigma}^{\dag}d_{\sigma}] = [V_{L},  d_{\sigma}^{\dag}d_{\sigma}] + [V_{R},  d_{\sigma}^{\dag}d_{\sigma}]
+% \end{equation}
+% in which,
+% \begin{equation}
+% \begin{split}
+% [V_{L},  d_{\sigma}^{\dag}d_{\sigma}] &= \sum_{k'\sigma'}\big(t_{k'\sigma'} \big[c_{k'\sigma'}^{\dag}d_{\sigma'},  d_{\sigma}^{\dag}d_{\sigma}\big] + t_{k'\sigma'}^{*} \big[d_{\sigma'}^{\dag}c_{k'\sigma'},  d_{\sigma}^{\dag}d_{\sigma}\big] \big) \\
+% &  = \sum_{k'\sigma'}\big(t_{k'\sigma'} c_{k'\sigma'}^{\dag}d_{\sigma'}\delta_{\sigma\sigma'} - t_{k'\sigma'}^{*} d_{\sigma'}^{\dag}c_{k'\sigma'} \delta_{\sigma\sigma'}\big) \\
+% &= \sum_{k}\big(t_{k\sigma} c_{k\sigma}^{\dag}d_{\sigma} - t_{k\sigma}^{*} d_{\sigma}^{\dag}c_{k\sigma} \big)
+% \end{split}
+% \end{equation}
+% We change the summation index from $k'$ to $k$ in the last line , which doesn't change the result.
+% \begin{equation}
+% [V_{R},  d_{\sigma}^{\dag}d_{\sigma}] = -\sum_{q}J_{q}\big( S_{q}^{-} \big[d_{\uparrow}^{\dag}d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma} \big] + S_{q}^{+}\big[d_{\downarrow}^{\dag}d_{\uparrow}, d_{\sigma}^{\dag}d_{\sigma} \big]\big)
+% \end{equation}
+% in which,
+% \begin{equation}
+% \begin{split}
+% \big[d_{\uparrow}^{\dag}d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma} \big] &= d_{\uparrow}^{\dag} \big[d_{\downarrow}, d_{\sigma}^{\dag}d_{\sigma}\big] + \big[d_{\uparrow}^{\dag} , d_{\sigma}^{\dag}d_{\sigma} \big]d_{\downarrow} \\
+% &=d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \downarrow} - d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \uparrow}
+% \end{split}
+% \end{equation}
+% So,
+% \begin{equation}
+% [V_{R},  d_{\sigma}^{\dag}d_{\sigma}] =  -\sum_{q}J_{q}\big[ S_{q}^{-} \big( d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \downarrow} - d_{\uparrow}^{\dag}d_{\downarrow}\delta_{\sigma \uparrow} \big) + S_{q}^{+}\big(d_{\downarrow}^{\dag}d_{\uparrow}\delta_{\sigma \uparrow} - d_{\downarrow}^{\dag}d_{\uparrow}\delta_{\sigma \downarrow} \big)\big]
+% \end{equation}
+% The spin-dependent current is
+% \begin{eqnarray}
+% I_{C\uparrow} = \frac{i}{\hbar}\big[ H, d_{\uparrow}^{\dag} d_{\uparrow} \big]
+% \\
+% I_{C\downarrow} = \frac{i}{\hbar}\big[ H, d_{\downarrow}^{\dag} d_{\downarrow} \big]
+% \end{eqnarray}
+% which gives
+% \begin{equation}
+% I_{C\uparrow} = \frac{i}{\hbar} \big[ \sum_{k}\big(t_{k\uparrow} c_{k\uparrow}^{\dag}d_{\uparrow} - t_{k\uparrow}^{*} d_{\uparrow}^{\dag}c_{k\uparrow} \big) + \sum_{q}J_{q}\big( S_{q}^{-} d_{\uparrow}^{\dag}d_{\downarrow} - S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big)\big]
+% \end{equation}
+% and
+% \begin{equation}
+% I_{C\downarrow} = \frac{i}{\hbar} \big[ \sum_{k}\big(t_{k\downarrow} c_{k\downarrow}^{\dag}d_{\downarrow} - t_{k\downarrow}^{*} d_{\downarrow}^{\dag}c_{k\downarrow} \big) + \sum_{q}J_{q}\big(S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} -  S_{q}^{-} d_{\uparrow}^{\dag}d_{\downarrow} \big)\big].
+% \end{equation}
+% The spin current in central dot is
+% \begin{equation}
+% I_{CS} = \frac{1}{2}(I_{C\uparrow} - I_{C\downarrow})
+% \end{equation}
 
-\subsection{Verifying continuity condition}
-\subsubsection{Charge current}
-Since the right lead is a insulating lead, there is no charge current flow through it, so the charge current is
-\begin{equation}
-I_{Re} = 0
-\end{equation}
-where the subscript R denotes the right lead, while the subscript e denotes the charge current.
+% \subsection{Verifying continuity condition}
+% \subsubsection{Charge current}
+% Since the right lead is a insulating lead, there is no charge current flow through it, so the charge current is
+% \begin{equation}
+% I_{Re} = 0
+% \end{equation}
+% where the subscript R denotes the right lead, while the subscript e denotes the charge current.
 
-Meanwhile, the charge current flows in left lead and QD is
-\begin{equation}
-I_{e} = e(\sum_{\sigma}I_{L\sigma} + \sum_{\sigma}I_{C\sigma}) = 0
-\end{equation}
-\subsubsection{Spin current}
-Spin current in the left lead and QD:
-\begin{equation}
-I_{LS} + I_{CS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
-\end{equation}
-The magnon current is
-\begin{equation}
-I_{RS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
-\end{equation}
-Thus, we have
-\begin{equation}
-\begin{split}
-I_{LS} + I_{CS} &= I_{RS}\\
-& = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
-\end{split}
-\end{equation}
-\section{Nonequilibrium Green's function technique}
+% Meanwhile, the charge current flows in left lead and QD is
+% \begin{equation}
+% I_{e} = e(\sum_{\sigma}I_{L\sigma} + \sum_{\sigma}I_{C\sigma}) = 0
+% \end{equation}
+% \subsubsection{Spin current}
+% Spin current in the left lead and QD:
+% \begin{equation}
+% I_{LS} + I_{CS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
+% \end{equation}
+% The magnon current is
+% \begin{equation}
+% I_{RS} = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
+% \end{equation}
+% Thus, we have
+% \begin{equation}
+% \begin{split}
+% I_{LS} + I_{CS} &= I_{RS}\\
+% & = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
+% \end{split}
+% \end{equation}
+% \section{Nonequilibrium Green's function technique}
 
 
 \end{CJK}
