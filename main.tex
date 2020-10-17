@@ -1,11 +1,16 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{book}
+\usepackage{xcolor}
 \usepackage{CJKutf8}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{braket}
 \usepackage{caption}
 \usepackage{bm}
+\usepackage{geometry}
+\geometry{a4paper,scale=0.8}
+
 \captionsetup{font={scriptsize}}
+
 \begin{CJK}{UTF8}{gbsn}
 \begin{document}
 
@@ -14,7 +19,7 @@
 % \date{}
 \date{\today}
 \maketitle
-% \tableofcontents
+\tableofcontents
 
 % \newpage
 
@@ -321,8 +326,216 @@ I_{LS} + I_{CS} &= I_{RS}\\
 & = \frac{i}{\hbar} \sum_{q} J_{q} \big( \big\langle S_{q}^{-}d_{\uparrow}^{\dag}d_{\downarrow}\big\rangle - \big\langle S_{q}^{+}d_{\downarrow}^{\dag}d_{\uparrow} \big\rangle \big) .
 \end{split}
 \end{equation}
+\subsection{Perturbation expansion of $G_{d}(\tau, \tau)$}
+When neglecting left lead, the hamiltonian is
+\begin{equation}
+H = H_{QD} + H_{R} + H_{sd}
+\end{equation}
+Expand S-matrix up to the second order of J, we have
+\begin{equation}
+\begin{split}
+&G_{d}(\tau, \tau) = -i\langle T_{C}Ss_{q}^{+}(\tau)s_{q}^{-}(\tau') \rangle \\
+=& -i\sum_{k} g_{k\uparrow}(\tau', \tau) g_{k+q\downarrow}(\tau, \tau') \\
++& \int_{c}d\tau_{1}\int_{c}d\tau_{2} \sum_{kq_{1}} J_{q_{1}}^{2} g_{Rq_{1}}(\tau_{2}, \tau_{1}) g_{k\uparrow}(\tau', \tau_{2}) g_{k+q_{1}\downarrow}(\tau_{2}, \tau_{1}) g_{k\uparrow}(\tau_{1}, \tau) g_{k+q\downarrow}(\tau, \tau') \\
++& \int_{c}d\tau_{1}\int_{c}d\tau_{2} \sum_{kq_{1}} J_{q_{1}}^{2} g_{Rq_{1}}(\tau_{2}, \tau_{1}) g_{k\uparrow}(\tau', \tau) g_{k+q\downarrow}(\tau, \tau_{1}) g_{k+q-q_{1}\uparrow}(\tau_{1}, \tau_{2}) g_{k+q\downarrow}(\tau_{2}, \tau') \\
+-& \int_{c}d\tau_{1}\int_{c}d\tau_{2} \sum_{kk'} J_{q}^{2} g_{Rq}(\tau_{2}, \tau_{1}) g_{k\uparrow}(\tau_{1}, \tau) g_{k+q\downarrow}(\tau, \tau_{1})  g_{k'\uparrow}(\tau', \tau_{2}) g_{k'+q\downarrow}(\tau_{2}, \tau')
+\end{split}
+\end{equation}
+\subsection{new hamiltonian}
+\begin{equation}
+H=H_{L}+H_{R}+H_{d}+H_{T}+H_{s d}
+\end{equation}
+\begin{equation}
+H_{L}=\sum_{k \sigma} \epsilon_{k \sigma, L} c_{k \sigma}^{\dagger} c_{k \sigma}
+\end{equation}
+\begin{equation}
+H_{R}=\sum_{q} \omega_{q} a_{q}^{\dagger} a_{q}
+\end{equation}
+\begin{equation}
+H_{d}=\sum_{n \sigma} \epsilon_{n \sigma} d_{n \sigma}^{\dagger} d_{n \sigma}
+\end{equation}
+\begin{equation}
+H_{T}=\sum_{k \sigma n}\left(t_{k \sigma n} c_{k \sigma}^{\dagger} d_{n \sigma}+t_{k \sigma n}^{*} d_{n \sigma}^{\dagger} c_{k \sigma}\right)
+\end{equation}
+\begin{equation}
+H_{s d}=-\sum_{q n m} J_{q}\left(d_{n \uparrow}^{\dagger} d_{m \downarrow} a_{q}^{\dagger}+a_{q} d_{m \downarrow}^{\dagger} d_{n \uparrow}\right) \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right)
+\end{equation}
+\begin{equation}
+s_{q}^{+}=\sum_{n m} d_{n \uparrow}^{\dagger} d_{m \downarrow} \delta_{\uparrow \downarrow}
+\end{equation}
+\begin{equation}
+s_{q}^{-}=\sum_{n m} d_{m \downarrow}^{\dagger} d_{n \uparrow} \delta_{\uparrow \downarrow}
+\end{equation}
+\subsubsection{check operators}
+\begin{equation}
+i \dot{a}_{q}=\omega_{q} a_{q}-J_{q} s_{q}^{+}
+\end{equation}
+\begin{equation}
+i \dot{c}_{k \sigma}=\epsilon_{k \sigma, L} c_{k \sigma}+\sum_{k^{\prime}} t_{k \sigma n} d_{n \sigma}
+\end{equation}
+\begin{equation}
+i \dot{d}_{n \uparrow}=\epsilon_{n \uparrow} d_{n \uparrow}+\sum_{k} t_{k \uparrow n}^{*} c_{k \uparrow}-\sum_{q, m} J_{q} a_{q}^{\dagger}d_{m \downarrow}\delta(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q})
+\end{equation}
+\begin{equation}
+i \dot{d}_{n \downarrow}=\epsilon_{n \downarrow} d_{n \downarrow}+\sum_{k} t_{k \downarrow n}^{*} c_{k \downarrow}-\sum_{q, m} J_{q} (a_{q}d_{m \uparrow}  - a_{q}^{\dag}d_{m\uparrow})\delta(\epsilon_{m \uparrow}-\epsilon_{n \downarrow}-\omega_{q})
+\end{equation}
+\begin{equation}
+-i \partial_{\tau^{\prime}} G_{d, R}\left(\tau, \tau^{\prime}\right)=\omega_{q} G_{d, R}\left(\tau, \tau^{\prime}\right)-J_{q} G_{d}
+\end{equation}
+or
+\begin{equation}
+G_{d, R} g_{R q}^{-1}=-J_{q} G_{d}
+\end{equation}
+or
+\begin{equation}
+G_{d, R}\left(\tau, \tau^{\prime}\right)=-J_{q} \int G_{d}\left(\tau, \tau_{1}\right) g_{R q}\left(\tau_{1}, \tau^{\prime}\right) d \tau_{1}
+\end{equation}
+the minus before $J_{q}$ originates from the minus in $H_{sd}$.
+\begin{equation}
+\begin{split}
+I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
+&=-\sum_{q} \int \operatorname{Tr}\left[G_{d}^{r}\left(\tau, \tau_{1}\right) \Sigma_{R q}^{<}\left(\tau_{1}, \tau^{\prime}\right)+G_{d}^{<}\left(\tau, \tau_{1}\right) \Sigma_{R q}^{a}\left(\tau_{1}, \tau^{\prime}\right)-h . c .\right] d \tau_{1}
+\end{split}
+\end{equation}
+\begin{equation}
+\Sigma_{R q}^{<}=i f_{R} e^{-i\omega_{q}(\tau-\tau')}
+\end{equation}
+\subsection{Calculation of $G_{d}$}
+Definition:
+\begin{equation}
+\begin{split}
+G_{d}\left(\tau, \tau^{\prime}\right)&=
+-i\left\langle T_{c} S s_{q}^{+}(\tau) s_{q}^{-}\left(\tau^{\prime}\right)\right\rangle \\
+&=-i\sum_{mnm'n'}\langle T_{c}S d_{n \uparrow}^{\dagger} d_{m \downarrow} d_{m' \downarrow}^{\dagger} d_{n' \uparrow} \rangle \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right) 
+\end{split}
+\end{equation}
+When right lead is absent,\\
+\begin{equation}
+G_{d}\left(\tau, \tau^{\prime}\right)&=-i\sum_{mnm'n'}G_{L,n'n\uparrow}(\tau', \tau) G_{L,mm'\downarrow}(\tau, \tau') \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right) \\
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+G_{L,mn\sigma}(\tau, \tau')&= -i\langle T_{c}d_{m\sigma}(\tau) d_{n\sigma}^{\dag}(\tau')\rangle \\
+&=g_{n\sigma}(\tau, \tau')\delta_{mn} \\
+&~~~+ \iint d\tau_{1}d\tau_{2} g_{m\sigma}(\tau, \tau_{2}) \sum_{k} t_{k\sigma n}t_{k\sigma m}^{*} g_{k\sigma}(\tau_{2}, \tau_{1}) g_{n\sigma}(\tau_{1}, \tau') \\
+&~~~ \cdots \\
+&=g_{n\sigma}(\tau, \tau')\delta_{mn} + \iint d\tau_{1}d\tau_{2} g_{m\sigma}(\tau, \tau_{2}) \Sigma_{L,mn\sigma}(\tau_{2}, \tau_{1}) g_{n\sigma}(\tau_{1}, \tau').
+\end{split}
+\end{equation}
+\begin{equation}
+g_{n\sigma}(\tau, \tau') = -i\langle T_{c}d_{n}(\tau) d_{n\sigma}^{\dag}(\tau')\rangle_{0}
+\end{equation}
+Self-energy of left lead
+\begin{equation}
+\Sigma_{L,mn\sigma}(\tau_{2}, \tau_{1}) = \sum_{k} t_{k\sigma n}t_{k\sigma m}^{*} g_{k\sigma}(\tau_{2}, \tau_{1})
+\end{equation}
+where
+\begin{equation}
+g_{k\sigma}(\tau_{2}, \tau_{1}) = -i\langle T_{c}c_{k\sigma}(\tau_{2}) c_{k\sigma}^{\dag}(\tau_{1})\rangle_{0}
+\end{equation}
+When left lead is absent,
+\begin{equation}
+\begin{split}
+G_{d}\left(\tau, \tau^{\prime}\right) =&-i\sum_{mn} g_{n \uparrow}\left(\tau^{\prime}, \tau\right) g_{m \downarrow}\left(\tau, \tau^{\prime}\right) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q})\\
+&-\int d\tau_{1}\int d\tau_{2} \sum_{mnm'n'}g_{n \uparrow}\left(\tau_{1}, \tau\right) g_{m \downarrow}\left(\tau, \tau_{1}\right) \Sigma_{R,mnm'n' }\left(\tau_{1}, \tau_{2}\right) g_{n'\uparrow}\left(\tau^{\prime}, \tau_{2}\right)g_{m'\downarrow}(\tau_{2}, \tau') \\
+&~~~\times \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q_{1}})\delta(\varepsilon_{n'\uparrow} - \varepsilon_{m'\downarrow} - \omega_{q_{1}})\\
+& + \cdots \\
+=& g_{d}(\tau, \tau') + \iint d\tau_{1}d\tau_{2}g_{d}(\tau, \tau_{1}) \Sigma_{R}(\tau_{1}, \tau_{2}) G_{d}(\tau_{2}, \tau')
+\end{split}
+\end{equation}
+in which, 
+\begin{equation}
+g_{d}\left(\tau, \tau^{\prime}\right) = -i\sum_{mn} g_{n \uparrow}\left(\tau^{\prime}, \tau\right) g_{m \downarrow}\left(\tau, \tau^{\prime}\right) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q}),
+\end{equation}
+the self-energy of right lead is
+\begin{equation}
+\Sigma_{R,mm'nn'}(\tau_{1}, \tau_{2}) = -i\sum_{q1}J_{q_{1}}^{2} g_{Rq_{1}}(\tau_{1}, \tau_{2}) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q_{1}})\delta(\varepsilon_{n'\uparrow} - \varepsilon_{m'\downarrow} - \omega_{q_{1}})
+\end{equation}
+\begin{equation}
+g_{Rq_{1}}(\tau_{1}, \tau_{2}) = -i\langle T_{c}a_{q_{1}}(\tau_{1}) a_{q_{1}}^{\dag}(\tau_{2})\rangle_{0}
+\end{equation}
+Hence, when both leads are present, we have
+\begin{equation}
+{\color{red}{\Large{?}}}~~G_{d}\left(\tau, \tau^{\prime}\right)=-i G_{L \uparrow}\left(\tau^{\prime}, \tau\right) G_{L \downarrow}\left(\tau, \tau^{\prime}\right)-i G_{L \uparrow}\left(\tau_{1}, \tau\right) G_{L \downarrow}\left(\tau, \tau_{1}\right) \Sigma_{R }\left(\tau_{1}, \tau_{2}\right) G_{d}\left(\tau_{2}, \tau^{\prime}\right)
+\label{eq:1}
+\end{equation}
+\subsection{continuation on Eq.(\ref{eq:1})}
+\begin{eqnarray}
+% \center
+A(\tau_{1}, \tau') \equiv\int d\tau_{2}\Sigma_{R }\left(\tau_{1}, \tau_{2}\right) G_{d}\left(\tau_{2}, \tau^{\prime}\right)\\
+B(\tau, \tau_{1}) \equiv G_{L \uparrow}\left(\tau_{1}, \tau\right) G_{L \downarrow}\left(\tau, \tau_{1}\right)\\
+C(\tau, \tau')\equiv -i G_{L \uparrow}\left(\tau_{1}, \tau\right) G_{L \downarrow}\left(\tau, \tau_{1}\right) A(\tau_{1}, \tau') \rightarrow \\
+C(\tau, \tau') = -i\int d\tau_{1}B(\tau, \tau_{1})A(\tau_{1}, \tau')\\
+D(\tau, \tau') \equiv -i G_{L \uparrow}\left(\tau^{\prime}, \tau\right) G_{L \downarrow}\left(\tau, \tau^{\prime}\right)
+\end{eqnarray}
+So, we have
+\begin{equation}
+G_{d}(\tau, \tau') = D + C
+\end{equation}
+Using the analytic continuation theorem, we have
+\begin{equation}
+D^{<} = -i G_{L \uparrow}^{>} G_{L \downarrow}^{<}
+\end{equation}
+\begin{equation}
+C^{<}=-i(B^{r} A^{<}+B^{<} A^{a})
+\end{equation}
+where
+\begin{equation}
+B^{r} = G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r}
+\end{equation}
+\begin{equation}
+A^{<}=\Sigma_{R}^{r} G_{d}^{<}+\Sigma_{R}^{<} G_{d}^{a}
+\end{equation}
+\begin{equation}
+B^{<}=G_{L\uparrow}^{>} G_{L\downarrow}^{<}
+\end{equation}
+\begin{equation}
+A^{a}=\Sigma_{R}^{a} G_{d}^{a}
+\end{equation}
+Then, the analytic continuation theorem on Eq.(\ref{eq:1}) yields
+\begin{equation}
+G_{d}^{<}=-i G_{L \uparrow}^{>} G_{L \downarrow}^{<} -i\left[(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r})(\Sigma_{R}^{r} G_{d}^{<}+\Sigma_{R}^{<} G_{d}^{a}) + (G_{L\uparrow}^{>} G_{L\downarrow}^{<})(\Sigma_{R}^{a} G_{d}^{a})\right]
+\label{eq:Gd<}
+\end{equation}
+Similarly, 
+\begin{equation}
+\begin{split}
+C^{r}&=-iB^{r} A^{r} \\
+&=-i(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r})(\Sigma_{R}^{r} G_{d}^{r})
+\end{split}
+\end{equation}
+\begin{equation}
+D^{r}=-i(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r}),
+\end{equation}
+we have
+\begin{equation}
+G_{d}^{r} =  -i(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r})-i(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r})(\Sigma_{R}^{r} G_{d}^{r}).
+\end{equation}
+Now we calculate $G_{d}^{a}$.
+\begin{equation}
+C^{a}=-iB^{a} A^{a}
+\end{equation}
+\begin{equation}
+B^{a}=G_{L \uparrow}^{r} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{a}+G_{L \uparrow}^{r} G_{L \downarrow}^{a}
+\end{equation}
+\begin{equation}
+D^{a}=-i(G_{L \uparrow}^{r} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{a}+G_{L \uparrow}^{r} G_{L \downarrow})
+^{a}
+\end{equation}
+So we have
+\begin{equation}
+G_{d}^{a} = -i(G_{L \uparrow}^{r} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{a}+G_{L \uparrow}^{r} G_{L \downarrow}
+^{a})-i(G_{L \uparrow}^{r} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{a}+G_{L \uparrow}^{r} G_{L \downarrow}^{a})(\Sigma_{R}^{a} G_{d}^{a})
+\end{equation}
+From Eq.(\ref{eq:Gd<}) we have
+\begin{equation}
+\begin{split}
+G_{d}^{<}&=-i G_{L \uparrow}^{>} G_{L \downarrow}^{<}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right)-i\left(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r}\right)\left(\Sigma_{q}^{<} G_{d}^{a}+\Sigma_{R q}^{r} G_{d}^{<}\right)\\
+&=\frac{-i G_{L \uparrow}^{>} G_{L \downarrow}^{<}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) - i\left(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r}\right)\Sigma_{R}^{<} G_{d}^{a}}{1+i\left(G_{L \uparrow}^{a} G_{L \downarrow}^{<}+G_{L \uparrow}^{>} G_{L \downarrow}^{r}+G_{L \uparrow}^{a} G_{L \downarrow}^{r}\right)\Sigma_{R}^{r}}
+\end{split}
+\end{equation}
 \section{Nonequilibrium Green's function technique}
-
 
 
 \begin{thebibliography}{10}
