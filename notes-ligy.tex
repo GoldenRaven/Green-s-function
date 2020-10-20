@@ -1,3 +1,28 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{xcolor}
+\usepackage{CJKutf8}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{caption}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{a4paper,scale=0.8}
+
+\captionsetup{font={scriptsize}}
+
+\begin{CJK}{UTF8}{gbsn}
+\begin{document}
+
+\title{NEGF Notes}
+% \author{Li Gaoyang}
+% \date{}
+\date{\today}
+\maketitle
+% \tableofcontents
+
+% \newpage
+
 \subsection{Hamiltonian}
 \begin{equation}
 H=H_{L}+H_{R}+H_{d}+H_{T}+H_{s d}
@@ -268,3 +293,32 @@ f_{L \sigma}(\epsilon)=\frac{1}{\exp \left(\beta_{L}\left(\epsilon-\mu_{\sigma}\
 \begin{equation}
 f_{L}^{B}(\omega)= \frac{1}{\exp \left(\beta_{L}\left(\omega+\Delta \mu_{s}\right)\right)-1}
 \end{equation}
+and $\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}, \Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$.
+\subsection{Spin current from the left lead}
+Define spin density operator
+\begin{equation}
+N_{sk} = d_{k \uparrow}^{\dagger} d_{k \uparrow}-d_{k \downarrow}^{\dagger} d_{k \downarrow}
+\end{equation}
+\begin{equation}
+I_{s L}=(1 / 2) \partial_{t} N_{s}=(1 / 2)\left(I_{\uparrow}-I_{\downarrow}\right)
+\end{equation}
+\begin{equation}
+I_{\sigma}=\operatorname{Tr}\left[\left(G_{d \sigma}^{r}-G_{d \sigma}^{a}\right) \Sigma_{L \sigma}^{<}+G_{d \sigma}^{<}\left(\Sigma_{L \sigma}^{a}-\Sigma_{L \sigma}^{r}\right)\right]
+\end{equation}
+\begin{equation}
+\left[G_{d \sigma}\right]_{n m}=-i\left\langle T_{c} S d_{n \sigma} d_{m \sigma}^{\dagger}\right\rangle
+\end{equation}
+the factor of 1/2 comes from spin of electron while spin of magnon is 1.
+
+
+
+
+
+
+\begin{thebibliography}{10}
+\bibitem{ref1}
+Y, K, Kato. Observation of the Spin Hall Effect in Semiconductors[J]. Science, 2004.
+\end{thebibliography}
+
+\end{CJK}
+\end{document}
