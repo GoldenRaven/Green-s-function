@@ -342,13 +342,141 @@ Expand S-matrix up to the second order of J, we have
 \end{split}
 \end{equation}
 \section{Checking formulas in notes}
-\include{notes-ligy}
+% \include{notes-ligy}
 \section{Nonequilibrium Green's function technique}
+We use the Hamiltonian in WangJian's notes. Equation of motion of particle operator $\hat{N}_{\alpha k\sigma}$ in the lead $\alpha$ is
+\begin{equation}
+\begin{split}
+\frac{d}{dt}\hat{N}_{\alpha} &= \frac{i}{\hbar}[H, \sum_{k}c_{\alpha k}^{\dag}c_{\alpha k}] = \left[\sum_{k'n, \alpha'=L, R}\left[t_{k' \alpha'} c_{k' \alpha'}^{\dag} d_{n}+\mathrm{c.c.}\right], \sum_{k}c_{\alpha k}^{\dag}c_{\alpha k}\right]\\
+&=\frac{i}{\hbar}\sum_{kk',n, \alpha'=L, R}\left[ -t_{k' \alpha'} c_{k' \alpha' }^{\dag} d_{n}\delta_{\alpha\alpha'}\delta_{kk'}+\mathrm{c.c.}\right]\\
+&=\frac{i}{\hbar}\sum_{kn}[-t_{k \alpha} c_{k \alpha}^{\dag} d_{n} + t_{k \alpha}^{*} d_{n}^{\dag}c_{k \alpha}]
+\end{split}
+\end{equation}
+So, the charge current is given by
+\begin{equation}
+\begin{split}
+I_{\alpha}(t) &= e\langle\frac{d}{dt}\hat{N}_{\alpha}(t)\rangle \\
+&=\frac{ie}{\hbar}\sum_{kn}(\langle -t_{k \alpha} c_{k \alpha}^{\dag}(t) d_{n}(t)\rangle + \langle t_{k \alpha}^{*} d_{n}^{\dag}(t)c_{k \alpha}(t)\rangle)
+\end{split}
+\end{equation}
+Define the lesser Green's function
+\begin{equation}
+G_{\sigma',k\alpha\sigma}^{<}(t,t') = i\langle c_{k\alpha\sigma}^{\dag}(t') d_{\sigma'}(t)\rangle 
+\end{equation}
+the charge current is written as
+\begin{equation}
+I_{\alpha}(t)=\frac{-e}{\hbar}\sum_{kn}(t_{k\alpha n}G_{n,k\alpha\sigma}^{<}(t,t) - t_{k \alpha n}^{*} G_{k\alpha,n}(t,t)\rangle)
+\end{equation}
+More generally, we define the contour Green's function
+\begin{equation}
+G_{n,k\alpha}(\tau,\tau') = -i\langle  d_{n}(\tau) c_{k\alpha}^{\dag}(\tau')\rangle .
+\end{equation}
+Following Jauho's notation~\cite{Jauho}, when the electron in the lead is non-interacting, G$_{n,k\alpha\sigma}(\tau,\tau')$ is related to $G_{nm}$ and $g_{k\alpha}$ by the following contour integral
+\begin{equation}
+G_{n,k\alpha}(\tau,\tau')=\sum_{m} \int d \tau_{1} G_{n m}\left(\tau, \tau_{1}\right) t_{k \alpha m}^{*} g_{k \alpha}\left(\tau_{1}, \tau^{\prime}\right)
+\end{equation}
+where
+\begin{equation}
+G_{n m}\left(\tau_{1}, \tau_{2}\right) \equiv-i \langle T_{c} \left[d_{n} \left(\tau_{1}\right) d_{m}^{\dagger}\left(\tau_{2}\right)\right]\rangle
+\end{equation}
+\begin{equation}
+g_{k \alpha}\left(\tau_{1}, \tau_{2}\right) \equiv-i \langle T_{c}\left[c_{k \alpha}\left(\tau_{1}\right) c_{k \alpha}^{\dagger}\left(\tau_{2}\right)\right] \rangle_{0}.
+\end{equation}
+Using the theorem of analytic continuation, we have
+\begin{equation}
+\begin{aligned}
+G_{n, k \alpha}^{<}\left(t, t^{\prime}\right) &=\sum_{m} \int d t_{1}\left[G_{n m}^{r}\left(t, t_{1}\right) t_{k \alpha m}^{*} g_{k \alpha}^{<}\left(t_{1}, t^{\prime}\right)\right.\\
+&\left.+G_{n m}^{<}\left(t, t_{1}\right) t_{k \alpha m}^{*} g_{k \alpha}^{a}\left(t_{1}, t^{\prime}\right)\right].
+\end{aligned}
+\end{equation}
+This gives the term in current
+\begin{equation}
+\begin{array}{l}
+\sum_{kn} t_{k \alpha n} G_{n, k \alpha}^{<}\left(t, t^{\prime}\right)=\sum_{k mn} \int d t_{1} t_{k \alpha n} t_{k \alpha m}^{*} \\
+\times\left[G_{n m}^{r}\left(t, t_{1}\right) g_{k \alpha}^{<}\left(t_{1}, t^{\prime}\right)+G_{n m}^{<}\left(t, t_{1}\right) g_{k \alpha}^{a}\left(t_{1}, t^{\prime}\right)\right] \\
+=\sum_{kn}\int d t_{1}\left[G^{r}\left(t, t_{1}\right) \Sigma_{\alpha}^{<}\left(t_{1}, t^{\prime}\right)+G^{<}\left(t, t_{1}\right) \Sigma_{\alpha}^{a}\left(t_{1}, t^{\prime}\right)\right]_{n n}
+\end{array}
+\end{equation}
+matrix element of the self-energy due to lead $\alpha$ is
+\begin{equation}
+\Sigma_{\alpha,mn}^{\gamma}(t_{1}, t_{2}) = \sum_{k} t_{k\alpha m}^{*}(t_{1}) g_{k\sigma}^{\gamma}(t_{1}, t_{2}) t_{k\alpha n}(t_{2})
+\end{equation}
+The demonstrative current of lead $\beta$ with spin $\sigma$ is~\cite{CaoZhan}
+\begin{equation}
+\begin{array}{r}
+I_{\beta \sigma}=\frac{e}{h} \sum_{k, i, j} \int d \omega V_{k i \beta \sigma} V_{k j \beta \sigma}^{*}\left\{\left[G_{i \sigma, j \sigma}^{r}(\omega)-G_{i \sigma, j \sigma}^{a}(\omega)\right] g_{k \beta \sigma}^{<}(\omega)\right. \\
+\left.-\left[g_{k \beta \sigma}^{r}(\omega)-g_{k \beta \sigma}^{a}(\omega)\right] G_{i \sigma, j \sigma}^{<}(\omega)\right\}.
+\end{array}
+\end{equation}
+In the equation, the free Green's functions of lead electrons are
+\begin{equation}
+g_{k \sigma}^{<}\left(t, t^{\prime}\right) \equiv i\left\langle c_{k \sigma}^{\dagger}\left(t^{\prime}\right) c_{k \sigma}(t)\right\rangle=i f\left(\varepsilon_{k}\right) e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+\end{equation}
+\begin{equation}
+g_{k \sigma}^{>}\left(t, t^{\prime}\right) \equiv-i\left\langle c_{k \sigma}(t) c_{k \sigma}^{\dagger}\left(t^{\prime}\right)\right\rangle=i\left[f\left(\varepsilon_{k}\right)-1\right] e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+\end{equation}
+\begin{equation}
+g_{k \sigma}^{r}(t) \equiv-i \theta(t)\left\langle\left[c_{k \sigma}(t), c_{k \sigma}^{\dagger}\left(t^{\prime}\right)\right]_{+}\right\rangle=-i \theta(t) e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+\end{equation}
+\begin{equation}
+g_{k \sigma}^{a}(t) \equiv i \theta(-t)\left\langle\left[c_{k \sigma}(t), c_{k \sigma}^{\dagger}\left(t^{\prime}\right)\right]_{+}\right\rangle=i \theta(-t) e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+\end{equation}
+Fourier transformation gives
+\begin{equation}
+g_{k \sigma}^{<}(\omega)=2 \pi i f\left(\varepsilon_{k\sigma}\right) \delta\left(\omega-\varepsilon_{k\sigma}\right) = if \left( \varepsilon_{k\sigma} \right) A_{0}(k,\omega)
+\end{equation}
+\begin{equation}
+g_{k \sigma}^{>}(\omega)=2 \pi i\left[f\left(\varepsilon_{k\sigma}\right)-1\right] \delta\left(\omega-\varepsilon_{k\sigma}\right)
+\end{equation}
+\begin{equation}
+g_{k \sigma}^{r}(\omega)= -i \int_{-\infty}^{\infty} d t e^{i \omega t} \theta(t) e^{-i \epsilon_{k\sigma} t}=-i \int_{0}^{\infty} d t e^{i\left(\omega-\epsilon_{k\sigma}\right) t} = \frac{-i}{i(\omega-\varepsilon_{k\sigma})}e^{i(\omega-\varepsilon)}|_{0}^{+\infty}
+\end{equation}
+To make the integral converge at the upper limit, we let $\omega\rightarrow \omega+i0^{+}$, where $0^{_{+}}$ is a positive infinitesimal, which yields
+\begin{equation}
+g_{k \sigma}^{r}(\omega) = \frac{1}{\omega-\varepsilon_{k\sigma}+i 0^{+}}.
+\end{equation}
+Similarly,
+\begin{equation}
+g_{k \sigma}^{a}(\omega)=\frac{1}{\omega-\varepsilon_{k\sigma}-i 0^{+}}.
+\end{equation}
+Then we have
+\begin{equation}
+g_{k \sigma}^{r}(\omega) - g_{k \sigma}^{a}(\omega) = -2\pi i\delta(\omega - \varepsilon_{k\sigma})
+\end{equation}
+The fermion spectral function is defined as
+\begin{equation}
+\begin{aligned}
+A_{0}(k \sigma, \omega) &=i\left[g_{k \sigma}^{r}(\omega)-g_{k \sigma}^{a}( \omega)\right] \\
+&=-2 \Im \mathrm{m}\left[g_{k \sigma}^{r}(\omega)\right] \\
+&=2 \pi \delta\left(\omega-\varepsilon_{k\sigma}\right)
+\end{aligned}
+\end{equation}
+where the following relation are used
+\begin{equation}
+\frac{1}{x\pm i \eta}=\mathscr{P} \frac{1}{x}\mp i \pi \delta(x), \quad \eta=0^{+},
+\end{equation}
+\begin{equation}
+\Im \mathrm{m}\left[g_{k \sigma}^{r}(\omega)\right] = -\pi\delta(\omega-\varepsilon_{k}).
+\end{equation}
+Substitute these relations into current formula, we have
+\begin{equation}
+I_{\beta \sigma}=\frac{i e}{h} \sum_{i, j} \int d \omega \Gamma_{i j \beta \sigma}(\omega)\left\{\left[G_{i \sigma, j \sigma}^{r}(\omega)-G_{i \sigma, j \sigma}^{a}(\omega)\right] f_{\beta}(\omega)+G_{i \sigma, j \sigma}^{<}(\omega)\right\}
+\end{equation}
+self-energy of lead $\alpha$ is
+\begin{equation}
+\Sigma_{\alpha}^{<}(\omega)=i \Gamma_{\alpha}\left(\omega-q v_{\alpha}\right) f_{\alpha}(\omega)
+\end{equation}
+Using relation
+
+the above formula can be reformed as
+
 
 
 \begin{thebibliography}{10}
 \bibitem{ref1}
 Y, K, Kato. Observation of the Spin Hall Effect in Semiconductors[J]. Science, 2004.
+\bibitem{Jauho}
+Antti-Pekka Jauho, Quantum Kinetics in Transport and Optics of Semiconductors, P188.
 \end{thebibliography}
 
 \end{CJK}

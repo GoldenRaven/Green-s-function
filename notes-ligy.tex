@@ -73,13 +73,16 @@ or
 \begin{equation}
 G_{d, R}\left(\tau, \tau^{\prime}\right)=-J_{q} \int G_{d}\left(\tau, \tau_{1}\right) g_{R q}\left(\tau_{1}, \tau^{\prime}\right) d \tau_{1}
 \end{equation}
-the minus before $J_{q}$ originates from the minus in $H_{sd}$.
+the minus before $J_{q}$ originates from the minus in $H_{sd}$. The lesser Green's function is($s_{q}^{+}$ is fermionic but $a_{q}$ is bosonic)
+\begin{equation}
+G_{d, R}^{<}\left(\tau, \tau^{\prime}\right)=i\langle s_{q}^{+}(\tau) a_{q}^{\dag}(\tau')\rangle
+\end{equation}
 \begin{equation}
 \begin{split}
 I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
-&=\sum_{q}J_{q}(G_{d,R}^{<}(t,t')-G_{R,d}^{<}(t,t')) \\
-&=-2\rm{Re}\sum_{q} \int \operatorname{Tr}\left[G_{d}^{r}\left(t, t_{1}\right) \Sigma_{R}^{<}\left(t_{1}, t^{\prime}\right)+G_{d}^{<}\left(t, t_{1}\right) \Sigma_{R}^{a}\left(t_{1}, t^{\prime}\right)\right] d t_{1}\\
-&= -2\rm{Re}\sum_{q} \int\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right] d t_{1}
+&=\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
+&=-2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[G_{d}^{r}\left(t, t_{1}\right) \Sigma_{R}^{<}\left(t_{1}, t^{\prime}\right)+G_{d}^{<}\left(t, t_{1}\right) \Sigma_{R}^{a}\left(t_{1}, t^{\prime}\right)\right]\\
+&= -2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
 \end{split}
 \end{equation}
 \begin{equation}
@@ -243,6 +246,15 @@ Similarly,
 G_{d}^{>}=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right) G_{L \uparrow}^{<} G_{L \downarrow}^{>}\left(1+\Sigma_{R}^{a} G_{d}^{a}\right)+G_{d}^{r} \Sigma_{R}^{>} G_{d}^{a}
 \end{equation}
 \subsection{DC spin current}
+
+\begin{equation}
+\begin{split}
+I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
+&=\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
+&= -2\rm{Re}\sum_{q} \int  \frac{d\omega}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
+\end{split}
+\end{equation}
+
 We have
 \begin{equation}
 G_{d}^{>}(E)-G_{d}^{<}(E)=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right)\left(G_{L \uparrow}^{<} G_{L \downarrow}^{>}-G_{L \uparrow}^{>} G_{L \downarrow}^{<}\right)\left(1+\Sigma_{R}^{a} G_{d}^{a}\right)+G_{d}^{r}\left(\Sigma_{R}^{>}-\Sigma_{R}^{<}\right) G_{d}^{a}
@@ -318,6 +330,8 @@ the factor of 1/2 comes from spin of electron while spin of magnon is 1.
 \begin{thebibliography}{10}
 \bibitem{ref1}
 Y, K, Kato. Observation of the Spin Hall Effect in Semiconductors[J]. Science, 2004.
+\bibitem{CaoZhan}
+Cao Zhan, Investigation on DC electronic transport in hybrid multiterminal quantum dot systems[D], 2017.
 \end{thebibliography}
 
 \end{CJK}
