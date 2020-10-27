@@ -7,7 +7,7 @@
 \usepackage{caption}
 \usepackage{bm}
 \usepackage{geometry}
-\geometry{a4paper,scale=0.8}
+\geometry{a4paper,scale=0.75}
 
 \captionsetup{font={scriptsize}}
 
@@ -344,6 +344,26 @@ Expand S-matrix up to the second order of J, we have
 \section{Checking formulas in notes}
 % \include{notes-ligy}
 \section{Nonequilibrium Green's function technique}
+\subsection{Demonstrative Hamiltonian}
+\begin{equation}
+\hat{H}=H_{l e a d}+H_{d o t}+H_{T}
+\end{equation}
+\begin{equation}
+H_{l e a d}=\sum_{k \alpha} \epsilon_{k \alpha} \hat{C}_{k \alpha}^{\dagger} \hat{C}_{k \alpha}
+\end{equation}
+\begin{equation}
+\epsilon_{k \alpha}=\epsilon_{k \alpha}^{(0)}+q v_{\alpha}
+\end{equation}
+\begin{equation}
+H_{d o t}=\sum_{n}\left(\epsilon_{n}+q U_{n}\right) d_{n}^{\dagger} d_{n}
+\end{equation}
+\begin{equation}
+U_{n}=\sum_{m} V_{n m}<d_{m}^{\dagger} d_{m}>
+\end{equation}
+\begin{equation}
+H_{T}=\sum_{k \alpha n}\left[t_{k \alpha n} \hat{C}_{k \alpha}^{\dagger} \hat{d}_{n}+t_{k \alpha n}^{*} \hat{d}_{n}^{\dagger} \hat{C}_{k \alpha}\right]
+\end{equation}
+\subsection{Current definition}
 We use the Hamiltonian in WangJian's notes. Equation of motion of particle operator $\hat{N}_{\alpha k\sigma}$ in the lead $\alpha$ is
 \begin{equation}
 \begin{split}
@@ -365,7 +385,7 @@ G_{\sigma',k\alpha\sigma}^{<}(t,t') = i\langle c_{k\alpha\sigma}^{\dag}(t') d_{\
 \end{equation}
 the charge current is written as
 \begin{equation}
-I_{\alpha}(t)=\frac{-e}{\hbar}\sum_{kn}(t_{k\alpha n}G_{n,k\alpha\sigma}^{<}(t,t) - t_{k \alpha n}^{*} G_{k\alpha,n}(t,t)\rangle)
+I_{L}(t)=\frac{-e}{\hbar}\sum_{kn\alpha\in L}(t_{k\alpha n}G_{n,k\alpha\sigma}^{<}(t,t) - t_{k \alpha n}^{*} G_{k\alpha,n}(t,t)\rangle)
 \end{equation}
 More generally, we define the contour Green's function
 \begin{equation}
@@ -394,23 +414,26 @@ This gives the term in current
 \begin{array}{l}
 \sum_{kn} t_{k \alpha n} G_{n, k \alpha}^{<}\left(t, t^{\prime}\right)=\sum_{k mn} \int d t_{1} t_{k \alpha n} t_{k \alpha m}^{*} \\
 \times\left[G_{n m}^{r}\left(t, t_{1}\right) g_{k \alpha}^{<}\left(t_{1}, t^{\prime}\right)+G_{n m}^{<}\left(t, t_{1}\right) g_{k \alpha}^{a}\left(t_{1}, t^{\prime}\right)\right] \\
-=\sum_{kn}\int d t_{1}\left[G^{r}\left(t, t_{1}\right) \Sigma_{\alpha}^{<}\left(t_{1}, t^{\prime}\right)+G^{<}\left(t, t_{1}\right) \Sigma_{\alpha}^{a}\left(t_{1}, t^{\prime}\right)\right]_{n n}
+=\sum_{n}\int d t_{1}\left[G^{r}\left(t, t_{1}\right) \Sigma_{\alpha}^{<}\left(t_{1}, t^{\prime}\right)+G^{<}\left(t, t_{1}\right) \Sigma_{\alpha}^{a}\left(t_{1}, t^{\prime}\right)\right]_{n n}
 \end{array}
+\label{eq:term1}
 \end{equation}
-matrix element of the self-energy due to lead $\alpha$ is
+matrix element of the self-energy $\Sigma_{\alpha}$ due to lead $\alpha$ is
 \begin{equation}
-\Sigma_{\alpha,mn}^{\gamma}(t_{1}, t_{2}) = \sum_{k} t_{k\alpha m}^{*}(t_{1}) g_{k\sigma}^{\gamma}(t_{1}, t_{2}) t_{k\alpha n}(t_{2})
+\Sigma_{\alpha,mn}^{\gamma}(t_{1}, t_{2}) = \sum_{k} t_{k\alpha m}^{*}(t_{1}) g_{k\alpha}^{\gamma}(t_{1}, t_{2}) t_{k\alpha n}(t_{2}).
 \end{equation}
-The demonstrative current of lead $\beta$ with spin $\sigma$ is~\cite{CaoZhan}
+Here, the matrix index are $m, n$, which is index for energy level of central scattering area. Substitute ~\ref{eq:term} in charge current, we have
 \begin{equation}
-\begin{array}{r}
-I_{\beta \sigma}=\frac{e}{h} \sum_{k, i, j} \int d \omega V_{k i \beta \sigma} V_{k j \beta \sigma}^{*}\left\{\left[G_{i \sigma, j \sigma}^{r}(\omega)-G_{i \sigma, j \sigma}^{a}(\omega)\right] g_{k \beta \sigma}^{<}(\omega)\right. \\
-\left.-\left[g_{k \beta \sigma}^{r}(\omega)-g_{k \beta \sigma}^{a}(\omega)\right] G_{i \sigma, j \sigma}^{<}(\omega)\right\}.
-\end{array}
+\begin{aligned}
+I_{\alpha}(t) &=-\frac{e}{\hbar} \int d t_{1} \operatorname{Tr}\left[G^{r}\left(t, t_{1}\right) \Sigma_{\alpha}^{<}\left(t_{1}, t\right)\right.\\
+&\left.+G^{<}\left(t, t_{1}\right) \Sigma_{\alpha}^{a}\left(t_{1}, t\right)\right]+h . c .
+\end{aligned}
 \end{equation}
-In the equation, the free Green's functions of lead electrons are
+where the summation over index $n$ is abbreviated in to matrix summation notation Tr, and summation index $k$ goes into self-energy matrix $\Sigma_{\alpha}$.
+\subsection{Free propagators}
+Here we assume a time-dependent external voltage $v_{\alpha}$. The free Green's functions of lead electrons are (XXX)
 \begin{equation}
-g_{k \sigma}^{<}\left(t, t^{\prime}\right) \equiv i\left\langle c_{k \sigma}^{\dagger}\left(t^{\prime}\right) c_{k \sigma}(t)\right\rangle=i f\left(\varepsilon_{k}\right) e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+g_{k \sigma}^{<}\left(t, t^{\prime}\right) \equiv i\left\langle c_{k \sigma}^{\dagger}\left(t^{\prime}\right) c_{k \sigma}(t)\right\rangle=i f(\varepsilon_{k}^{(0)}) e^{-i \int_{t'}^{t}dt_{1}\varepsilon_{k\sigma}(t_{1})}
 \end{equation}
 \begin{equation}
 g_{k \sigma}^{>}\left(t, t^{\prime}\right) \equiv-i\left\langle c_{k \sigma}(t) c_{k \sigma}^{\dagger}\left(t^{\prime}\right)\right\rangle=i\left[f\left(\varepsilon_{k}\right)-1\right] e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
@@ -420,6 +443,10 @@ g_{k \sigma}^{r}(t) \equiv-i \theta(t)\left\langle\left[c_{k \sigma}(t), c_{k \s
 \end{equation}
 \begin{equation}
 g_{k \sigma}^{a}(t) \equiv i \theta(-t)\left\langle\left[c_{k \sigma}(t), c_{k \sigma}^{\dagger}\left(t^{\prime}\right)\right]_{+}\right\rangle=i \theta(-t) e^{-i \varepsilon_{k\sigma}\left(t-t^{\prime}\right)}
+\end{equation}
+Using the relation
+\begin{equation}
+\int d t e^{i \omega t}=2 \pi \delta(\omega),
 \end{equation}
 Fourier transformation gives
 \begin{equation}
@@ -442,6 +469,7 @@ g_{k \sigma}^{a}(\omega)=\frac{1}{\omega-\varepsilon_{k\sigma}-i 0^{+}}.
 Then we have
 \begin{equation}
 g_{k \sigma}^{r}(\omega) - g_{k \sigma}^{a}(\omega) = -2\pi i\delta(\omega - \varepsilon_{k\sigma})
+\label{eq:r-a}
 \end{equation}
 The fermion spectral function is defined as
 \begin{equation}
@@ -458,7 +486,111 @@ where the following relation are used
 \begin{equation}
 \Im \mathrm{m}\left[g_{k \sigma}^{r}(\omega)\right] = -\pi\delta(\omega-\varepsilon_{k}).
 \end{equation}
-Substitute these relations into current formula, we have
+\subsection{DC case}
+\begin{equation}
+G^{\gamma}\left(t, t_{1}\right)=G^{\gamma}\left(t-t_{1}\right)
+\end{equation}
+and
+\begin{equation}
+\Sigma^{\gamma}\left(t, t_{1}\right)=\Sigma^{\gamma}\left(t-t_{1}\right)
+\end{equation}
+where
+\begin{equation}
+\gamma=<,>, r, a.
+\end{equation}
+Recall that
+\begin{equation}
+\left[G^{<}\right]^{\dagger}(E)=-G^{<}(E)
+\end{equation}
+\begin{equation}
+\left[G^{r}\right]^{\dagger}=G^{a}
+\end{equation}
+and using equation (221) in WangJian's note, we have charge current for DC bias
+\begin{equation}
+\begin{aligned}
+I_{\alpha} &=-\frac{e}{\hbar} \int \frac{d E}{2 \pi} \operatorname{Tr}\left[\left(G^{r}(E)-G^{a}(E)\right) \Sigma_{\alpha}^{<}(E)\right.\\
+&\left.+G^{<}(E)\left(\Sigma_{\alpha}^{a}(E)-\Sigma_{\alpha}^{r}(E)\right)\right]
+\end{aligned}
+\label{eq:current1}
+\end{equation}
+Substitute free propagators in, we have
+\begin{equation}
+\Sigma_{\alpha,mn}^{<}(t-t_{1}) = \sum_{k} t_{k\alpha m}^{*}(t_{1}) g_{k\alpha}^{<}(t_{1}-t_{2}) t_{k\alpha n}(t_{2}) = i\sum_{k} t_{k\alpha m}^{*}(t_{1}) f(\epsilon_{k\alpha})e^{-i\varepsilon_{k\alpha(t-t_{1})}}t_{k\alpha n}(t_{2})
+\end{equation}
+Fourier transformation gives (XXX)
+\begin{equation}
+\Sigma_{\alpha,mn}^{<}(E) = 2\pi i\sum_{k}t_{k\alpha m}^{*}f(\varepsilon_{k\alpha})t_{k\alpha n} \delta(E-\varepsilon_{k\alpha})
+\end{equation}
+\begin{equation}
+\Sigma_{\alpha}^{a}(E)-\Sigma_{\alpha}^{r}(E) = \sum_{k}t_{k\alpha m}^{*}(g_{k\alpha}^{a}(E)-g_{k\alpha}^{r}(E))t_{k\alpha n}
+\end{equation}
+which according to Eq. (\ref{eq:r-a}), we have
+\begin{equation}
+\Sigma_{\alpha}^{a}(E)-\Sigma_{\alpha}^{r}(E) = 2\pi i\sum_{k}t_{k\alpha m}^{*}\delta(E-\epsilon_{k\alpha})t_{k\alpha n}.
+\end{equation}
+Define a level-width function:
+\begin{equation}
+\Gamma_{\alpha,mn}(E)=\sum_{k} 2 \pi  t_{k\alpha m}^{*}t_{k\alpha n} \delta\left(E-\varepsilon_{k\alpha}\right)
+\end{equation}
+So it gives equations
+\begin{equation}
+\Sigma_{\alpha,mn}^{<}(E) = if(\varepsilon_{k\alpha})\Gamma_{\alpha,mn}(E)
+\end{equation}
+and
+\begin{equation}
+\Sigma_{\alpha}^{a}(E)-\Sigma_{\alpha}^{r}(E) = i\Gamma_{\alpha,mn}(E)
+\end{equation}
+Then Eq. (\ref{eq:current1}) can be written as
+\begin{equation}
+\begin{aligned}
+I_{\alpha} =&-\frac{e}{\hbar} \int \frac{d E}{2 \pi} \operatorname{Tr}\left[\left(G^{r}(E)-G^{a}(E)\right) (if(\varepsilon_{k\alpha}\Gamma_{\alpha,mn}(E)))\right.\\
+&+G^{<}(E)(i\Gamma_{\alpha,mn}(E))\right]\\
+=& -\frac{ie}{\hbar} \int \frac{d E}{2 \pi} \operatorname{Tr}\left[\Gamma_{\alpha,mn}(E)(\left[G^{r}(E)-G^{a}(E)\right] f(\varepsilon_{k\alpha}) +G^{<}(E))\right]
+\end{aligned}
+\label{eq:dc-current}
+\end{equation}
+In steady state, $I=I_{L}=-I_{R}$, or $I=I_{L}+I_{R}=(I_{L}-I_{R})/2$, this leads to the general expression for the dc-current
+\begin{equation}
+\begin{aligned}
+I=& -\frac{\mathrm{i} e}{2 \hbar} \int \frac{\mathrm{d} \varepsilon}{2 \pi} \operatorname{Tr}\left\{\left[\boldsymbol{\Gamma}^{L}(\varepsilon)-\boldsymbol{\Gamma}^{R}(\varepsilon)\right] \mathbf{G}^{<}(\varepsilon)\right.\\
+&\left.+\left[f_{L}(\varepsilon) \boldsymbol{\Gamma}^{L}(\varepsilon)-f_{R}(\varepsilon) \boldsymbol{\Gamma}^{R}(\varepsilon)\right]\left[\mathbf{G}^{\mathrm{r}}(\varepsilon)-\mathbf{G}^{\mathrm{a}}(\varepsilon)\right]\right\}
+\end{aligned}
+\end{equation}
+if the left and right line-width functions are proportional to each other,
+\begin{equation}
+\boldsymbol{\Gamma}^{L}(\varepsilon)=\lambda \boldsymbol{\Gamma}^{R}(\varepsilon)
+\end{equation}
+and fix the arbitrary parameter $x$, i.e. $x=1 /(1+\lambda)$, gives
+\begin{equation}
+\begin{aligned}
+J &=\frac{1 e}{\hbar} \int \frac{\mathrm{d} \varepsilon}{2 \pi}\left[f_{L}(\varepsilon)-f_{R}(\varepsilon)\right] \mathcal{T}(\varepsilon) \\
+\mathcal{T}(\varepsilon) &=\operatorname{Tr}\left\{\frac{\Gamma^{L}(\varepsilon) \Gamma^{R}(\varepsilon)}{\Gamma^{L}(\varepsilon)+\Gamma^{R}(\varepsilon)}\left[\mathbf{G}^{\mathrm{r}}(\varepsilon)-\mathbf{G}^{\mathrm{a}}(\varepsilon)\right]\right\}
+\end{aligned}
+\end{equation}
+Despite the apparent similarity of (12.27) to the Landauer formula, it is important to bear in mind that, in general, there is no immediate connection between the quantity $\mathcal{T}(\varepsilon)$ and the transmission coefficient $T(\varepsilon)$.
+\subsection{Another way to get $G_{n,k\alpha}(\tau,\tau')$(Dyson equation + Keldysh equation)}
+Denote $G_{0}$ the Green’s function of the isolated quantum dot and leads corresponding to the Hamiltonian $H_{0}$, and $G$ the Green’s function of the open system corresponding to $H$, one has the Dyson equation
+\begin{equation}
+G=G_{0}+G_{0} \Sigma G
+\end{equation}
+Use the theorem of analytic continuation on Dyson equation, we get the Keldysh equation (\textcolor{red}{in matrix representation})
+\begin{equation}
+G^{<,>}=G_{0}^{<,>}+G^{r} \Sigma^{r} G_{0}^{<,>}+G^{<,>} \Sigma^{a} G_{0}^{a}+G^{r} \Sigma^{<,>} G_{0}^{a}
+\end{equation}
+or
+\begin{equation}
+G^{<}=G^{r}\left(G_{0}^{r}\right)^{-1} G_{0}^{<}\left(G_{0}^{a}\right)^{-1} G^{a}+G^{r} \Sigma^{<} G^{a}
+\end{equation}
+See Eq. (77) in WangJian's notes.
+\subsection{With spin index}
+The demonstrative current of lead $\beta$ with spin $\sigma$ is~\cite{CaoZhan}
+\begin{equation}
+\begin{array}{r}
+I_{\beta \sigma}=\frac{e}{h} \sum_{k, i, j} \int d \omega V_{k i \beta \sigma} V_{k j \beta \sigma}^{*}\left\{\left[G_{i \sigma, j \sigma}^{r}(\omega)-G_{i \sigma, j \sigma}^{a}(\omega)\right] g_{k \beta \sigma}^{<}(\omega)\right. \\
+\left.-\left[g_{k \beta \sigma}^{r}(\omega)-g_{k \beta \sigma}^{a}(\omega)\right] G_{i \sigma, j \sigma}^{<}(\omega)\right\}.
+\end{array}
+\end{equation}
+Substitute free propagators into current formula, we have
 \begin{equation}
 I_{\beta \sigma}=\frac{i e}{h} \sum_{i, j} \int d \omega \Gamma_{i j \beta \sigma}(\omega)\left\{\left[G_{i \sigma, j \sigma}^{r}(\omega)-G_{i \sigma, j \sigma}^{a}(\omega)\right] f_{\beta}(\omega)+G_{i \sigma, j \sigma}^{<}(\omega)\right\}
 \end{equation}
@@ -466,10 +598,6 @@ self-energy of lead $\alpha$ is
 \begin{equation}
 \Sigma_{\alpha}^{<}(\omega)=i \Gamma_{\alpha}\left(\omega-q v_{\alpha}\right) f_{\alpha}(\omega)
 \end{equation}
-Using relation
-
-the above formula can be reformed as
-
 
 
 \begin{thebibliography}{10}
