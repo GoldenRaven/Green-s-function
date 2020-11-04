@@ -517,7 +517,7 @@ Substitute free propagators in, we have
 \begin{equation}
 \Sigma_{\alpha,mn}^{<}(t-t_{1}) = \sum_{k} t_{k\alpha m}^{*}(t_{1}) g_{k\alpha}^{<}(t_{1}-t_{2}) t_{k\alpha n}(t_{2}) = i\sum_{k} t_{k\alpha m}^{*}(t_{1}) f(\epsilon_{k\alpha})e^{-i\varepsilon_{k\alpha(t-t_{1})}}t_{k\alpha n}(t_{2})
 \end{equation}
-Fourier transformation gives (XXX)
+Fourier transformation gives (dependent variable $\epsilon_{k\alpha}$ not $\omega$?, check Eq.(71) in WangJ's note Chap2?)
 \begin{equation}
 \Sigma_{\alpha,mn}^{<}(E) = 2\pi i\sum_{k}t_{k\alpha m}^{*}f(\varepsilon_{k\alpha})t_{k\alpha n} \delta(E-\varepsilon_{k\alpha})
 \end{equation}
@@ -532,7 +532,7 @@ Define a level-width function:
 \begin{equation}
 \Gamma_{\alpha,mn}(E)=\sum_{k} 2 \pi  t_{k\alpha m}^{*}t_{k\alpha n} \delta\left(E-\varepsilon_{k\alpha}\right)
 \end{equation}
-So it gives equations
+So it gives equations(the fermion distribution is factorized out of summation $k$?)
 \begin{equation}
 \Sigma_{\alpha,mn}^{<}(E) = if(\varepsilon_{k\alpha})\Gamma_{\alpha,mn}(E)
 \end{equation}
@@ -579,6 +579,10 @@ G^{<,>}=G_{0}^{<,>}+G^{r} \Sigma^{r} G_{0}^{<,>}+G^{<,>} \Sigma^{a} G_{0}^{a}+G^
 \end{equation}
 or
 \begin{equation}
+G^{<,>}=G_{0}^{<,>}+G_{0}^{r} \Sigma^{r} G^{<,>}+G_{0}^{<,>} \Sigma^{a} G^{a}+G_{0}^{r} \Sigma^{<,>} G^{a}
+\end{equation}
+or
+\begin{equation}
 G^{<}=G^{r}\left(G_{0}^{r}\right)^{-1} G_{0}^{<}\left(G_{0}^{a}\right)^{-1} G^{a}+G^{r} \Sigma^{<} G^{a}
 \end{equation}
 See Eq. (77) in WangJian's notes.
@@ -598,6 +602,7 @@ self-energy of lead $\alpha$ is
 \begin{equation}
 \Sigma_{\alpha}^{<}(\omega)=i \Gamma_{\alpha}\left(\omega-q v_{\alpha}\right) f_{\alpha}(\omega)
 \end{equation}
+
 
 
 \begin{thebibliography}{10}
