@@ -15,7 +15,7 @@ global omegac
 omegac = 80;
 
 T0 = 300;                               % unit: K
-DeltaT = 0;
+DeltaT = 50;
 T_L = T0 + DeltaT./2.0;               % left lead temperature, unit: K
 T_R = T0 - DeltaT./2.0;              % right lead temperature, unit: K
 beta_L = 1./(k_B.*T_L/meV);    % beta of left metal lead, unit: meV^-1
@@ -37,16 +37,33 @@ f_L_down = @(E) 1./(exp(beta_L.*(E-mu_down))+1);
 % define integrant
 my_integrant2 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
-%==================================================================================
-% output
+% integral limits of E
 E_limit = 5e2;
 E_lower = -1.*E_limit;
 E_upper = E_limit;
-display('Warning! the integral limit is [-2k_B*T0, 2k_B*T0], [0, 80]');
-display('');
-out = quad2d(my_integrant2, E_lower, E_upper, 0, omegac);
-out = integral2(my_integrant2, E_lower, E_upper, 0, omegac);
-display(out);
+
+%==================================================================================
+% % output
+% display('Warning! the integral limit is [-2k_B*T0, 2k_B*T0], [0, 80]');
+% display('');
+% out = quad2d(my_integrant2, E_lower, E_upper, 0, omegac);
+% % out = integral2(my_integrant2, E_lower, E_upper, 0, omegac);
+% display(out);
+%==================================================================================
+dT = linspace(-2*T0, 2*T0, 100);
+d_mu = linspace(-2*mu0, 2*mu0, 100);
+data = zeros(100, 3);
+count = 1
+for deltaT = dT
+    for delta_mu = d_mu
+        out = quad2d(my_integrant2, E_lower, E_upper, 0, omegac);
+        data(count, :) = [deltaT, delta_mu, out];
+        count = count + 1;
+        %display(out);
+    end
+end
+display(count);
+writematrix(data, 'current.txt')
 %==================================================================================
 % x = linspace(-1000, 1000, 10000);
 % y = linspace(0, omegac, 10000);
@@ -91,6 +108,6 @@ function out = DL_down(E, e0_down)
 end
 
 function out = Gamma_L(E)
-    Gamma0 = 0.1.*E./E;
+    Gamma0 = 0.1;
     out = Gamma0;
 end
