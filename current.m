@@ -3,26 +3,28 @@
 % by ligy
 
 %clc;
-close all;
-clear all;
+%close all;
+%clear all;
+%tic;
 
 % constants
 k_B = physconst('Boltzman');
 charge_e = 1.602176634e-19;
 meV = 1.0e-3.*charge_e;
 
-global omegac alpha E0_up E0_down Gamma0
+global omegac alpha E0_up E0_down Gamma0 W
 
 omegac = 80;                            % cutoff frequency, unit: meV
 alpha = 0.2;                            % disspation strength, dimensionless
 T0 = 300;                               % average temperature, unit:K
-mu0 = 20;                               % average spin baias, unit: meV
-E0_up = 3;                              % QD up level, unit: meV
-E0_down = -2;                           % QD down level, unit: meV
-Gamma0=1;                               % effective coupling, unit:meV
+mu0 = 32.5;                               % average spin baias, unit: meV
+E0_up = 30;                              % QD up level, unit: meV
+E0_down = 35;                           % QD down level, unit: meV
+Gamma0=4;                               % effective coupling, unit:meV
+W=80;                                   % bandwidth of left metal lead Lorentz spectral
 
 % integral limits of E
-E_limit = 5e2;
+E_limit = 2e2;
 E_lower = -1.*E_limit;
 E_upper = E_limit;
 
@@ -31,9 +33,8 @@ E_upper = E_limit;
 % display('Warning! the integral limit is [-2k_B*T0, 2k_B*T0], [0, 80]');
 %==================================================================================
 %calculate current
-dT = linspace(-2*T0, 2*T0, 1000);
-d_mu = linspace(-2*mu0, 2*mu0, 1000);
-data = zeros(100, 3);
+dT = linspace(-1.99*T0, 1.99*T0, 50);
+d_mu = linspace(-1.99*mu0, 1.99*mu0, 50);
 fileID = fopen('current.txt','w');
 count = 1;
 for deltaT = dT
@@ -57,12 +58,24 @@ for deltaT = dT
         % define integrant
         my_integrant2 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
-        currt = quad2d(my_integrant2, E_lower, E_upper, 0, omegac);
-        count = count + 1;
+        % currt = integral2(my_integrant2, E_lower, E_upper, -10*omegac, 10*omegac);
+        currt = quad2d(my_integrant2, E_lower, E_upper, -200, 200, 'Singular', true);%, 'MaxFunEvals', 90000);
         fprintf(fileID, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, currt);
+        currt
+
+        %==================================================================================
+        % plot the integrant function
+        x = linspace(-500, 500, 10000);
+        y = linspace(-10*omegac, 10*omegac, 10000);
+        plot3(x, y, my_integrant2(x, y));
+        xlabel('E')
+        ylabel('omega')
+        %==================================================================================
+
     end
 end
-display(count);
+%toc;
+%display('Time used: ', num2str(toc));
 %==================================================================================
 % % plot contour, save to file
 % fig = figure;
@@ -71,8 +84,8 @@ display(count);
 % contour(deltaT, delta_mu, current, 'ShowText','on');
 % saveas(fig, 'current.pdf')
 %==================================================================================
-% x = linspace(-1000, 1000, 10000);
-% y = linspace(0, omegac, 10000);
+% x = linspace(-500, 500, 10000);
+% y = linspace(-10*omegac, 10*omegac, 10000);
 % plot3(x, y, my_integrant2(x, y));
 % xlabel('E')
 % ylabel('omega')
@@ -112,6 +125,7 @@ function out = DL_down(E)
 end
 
 function out = Gamma_L(E)
-    global Gamma0
+    global Gamma0 W
     out = Gamma0;
+    %out = Gamma0.*W.*W./(2*pi*(E.*E+W.*W));
 end
