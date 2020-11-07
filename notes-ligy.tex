@@ -122,7 +122,8 @@ Self-energy of left lead
 \end{equation}
 where
 \begin{equation}
-g_{k\sigma}(\tau_{2}, \tau_{1}) = -i\langle T_{c}c_{k\sigma}(\tau_{2}) c_{k\sigma}^{\dag}(\tau_{1})\rangle_{0}
+g_{k\sigma}(\tau_{2}, \tau_{1}) = -i\langle T_{c}c_{k\sigma}(\tau_{2}) c_{k\sigma}^{\dag}(\tau_{1})\rangle_{0}.
+\label{eq:left-self-energy}
 \end{equation}
 When left lead is absent,
 \begin{equation}
@@ -251,8 +252,9 @@ G_{d}^{>}=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right) G_{L \uparrow}^{<} G_{L \dow
 \begin{split}
 I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
 &=\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
-&= -2\rm{Re}\sum_{q} \int  \frac{d\omega}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
+&= -2\rm{Re}\sum_{q} \int  \frac{dE}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
 \end{split}
+\label{eq:current1}
 \end{equation}
 
 We have
@@ -268,31 +270,47 @@ G_{d}^{<}(E) = \int_{-\infty}^{+\infty} dt G_{d}^{<}(t-t')e^{iE(t-t')}
 \end{equation}
 and inverse Fourier transformation
 \begin{equation}
-G_{d}^{<}(t-t') = \frac{1}{2\pi}\int_{-\infty}^{+\infty} d\omega G_{d}^{<}(E)e^{-iE(t-t')}
+G_{d}^{<}(t-t') = \frac{1}{2\pi}\int_{-\infty}^{+\infty} d\omega G_{d}^{<}(E)e^{-iE(t-t')},
 \end{equation}
-Then,
+are used, since the Green's functions only dependent on time difference. Then using Keldysh equation, we have
 \begin{equation}
   \label{eq:3}
-G_{L,mn\uparrow}(E) = 
+G_{L,mn\sigma}^{<}(E) = G_{L,mn\sigma}^{r}\Sigma_{L,mn\sigma}^{<}(E) G_{L,mn\sigma}^{a}(E),
 \end{equation}
+where $G_{L,mn\sigma}$ is the Green's function when left free lead, QD and left coupling present.  $\Sigma_{L,mn\sigma}^{<}$ is self-energy of left lead, defined in Eq. (\ref{eq:left-self-energy})
+\begin{equation}
+\Sigma_{L,mn\sigma}^{<} = if_{L\sigma}(E) \Gamma_{L,mn\sigma}(E).
+\end{equation}
+so,
 \begin{equation}
   \label{eq:3}
-G_{L \uparrow}^{>} = 1- f_{L\uparrow}
+G_{L,mn\sigma}^{<}(E) = iG_{L,mn\sigma}^{r}f_{L\sigma}(E) \Gamma_{L,mn\sigma}(E) G_{L,mn\sigma}^{a}(E)  \equiv i D_{L \sigma} f_{L \sigma},
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+G_{L,mn\sigma}^{>}(E) &= -(G_{L,mn\sigma}^{<}(E))^{\dag} \\
+&= G_{L,mn\sigma}^{r}(E)\Sigma_{L,mn\sigma}^{>}(E) G_{L,mn\sigma}^{a}(E)\\
+&=iD_{L\sigma}(f_{L\uparrow}(E) - 1)
+\end{split}
+\end{equation}
+in which, $D_{L\sigma} = G_{L\sigma}^{r}\Gamma_{L\sigma}G_{L\sigma}^{a}$.
+\begin{equation}
+\begin{split}
+\Sigma_{R}^{<}(E) &=  \sum_{q_{1}}J_{q_{1}}^{2} g_{Rq_{1}}^{<}(E) \\
+&= if_{R}^{B}(E) \Gamma_{R}(E)
+\end{split}
 \end{equation}
 \begin{equation}
-G_{L\downarrow}^{<} = f_{L\downarrow}
+\Sigma_{R}^{a} - \Sigma_{R}^{r} = \Sigma_{R}^{<} - \Sigma_{R}^{>} = i\Gamma_{R}(E).
 \end{equation}
 \begin{equation}
-\Sigma_{R}^{<}(t, t') = -i\sum_{q_{1}} J_{q_{1}}^{2} g_{Rq_{1}}^{<}(t, t')
+G_{d}^{>}-G_{d}^{<}=i\left[f_{L \uparrow}-f_{L \downarrow}\right]\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right)-i G_{d}^{r} \Gamma_{R q} G_{d}^{a}
 \end{equation}
 \begin{equation}
-\Sigma_{R}^{a} - \Sigma_{R}^{r} = 
-\end{equation}
-\begin{equation}
-G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) = 
-\end{equation}
-\begin{equation}
-{\color{red}{\Large{?}}}\quad G_{L \sigma}^{<}=i G_{L \sigma}^{r} \Gamma_{L \sigma} f_{L \sigma} G_{L \sigma}^{a} \equiv i D_{L \sigma} f_{L \sigma}
+\begin{aligned}
+\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) &=-\left[\left(f_{L \uparrow}-f_{L \downarrow}\right) f_{R}+\left(f_{L \uparrow}-1\right) f_{L \downarrow}\right] \\ & \times\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) \Gamma_{R q} 
+\end{aligned}
 \end{equation}
 The following formula exists
 \begin{equation}
@@ -300,12 +318,13 @@ The following formula exists
 \end{equation}
 where,
 \begin{equation}
-f_{L \sigma}(\epsilon)=\frac{1}{\exp \left(\beta_{L}\left(\epsilon-\mu_{\sigma}\right)\right)+1}
+f_{L \sigma}(\epsilon)=\frac{1}{e^{\beta_{L}(\epsilon-\mu_{\sigma})}+1}
 \end{equation}
 \begin{equation}
-f_{L}^{B}(\omega)= \frac{1}{\exp \left(\beta_{L}\left(\omega+\Delta \mu_{s}\right)\right)-1}
+f_{L}^{B}= \frac{1}{e^{\beta_{L}\Delta \mu_{s}}-1 }
 \end{equation}
-and $\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}, \Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$.
+$\Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$ ($\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}$?).
+Substitute in Eq. (\ref{eq:current1}), we get
 \subsection{Spin current from the left lead}
 Define spin density operator
 \begin{equation}
