@@ -17,26 +17,24 @@ global omegac alpha E0_up E0_down Gamma0 W
 omegac = 80;                            % cutoff frequency, unit: meV
 alpha = 0.2;                            % disspation strength, dimensionless
 T0 = 300;                               % average temperature, unit:K
-mu0 = 32.5;                               % average spin baias, unit: meV
-E0_up = 30;                              % QD up level, unit: meV
-E0_down = 35;                           % QD down level, unit: meV
-Gamma0=4;                               % effective coupling, unit:meV
+mu0 = 0.5;                               % average spin baias, unit: meV
+E0_up = -2;                              % QD up level, unit: meV
+E0_down = 3;                           % QD down level, unit: meV
+Gamma0=1;                               % effective coupling, unit:meV
 W=80;                                   % bandwidth of left metal lead Lorentz spectral
-
-% integral limits of E
-E_limit = 2e2;
-E_lower = -1.*E_limit;
-E_upper = E_limit;
 
 %==================================================================================
 % % output
 % display('Warning! the integral limit is [-2k_B*T0, 2k_B*T0], [0, 80]');
 %==================================================================================
 %calculate current
-dT = linspace(-1.99*T0, 1.99*T0, 50);
-d_mu = linspace(-1.99*mu0, 1.99*mu0, 50);
 fileID = fopen('current.txt','w');
-count = 1;
+%fileID2 = fopen('heat.txt','w');
+% d_mu = 0;
+%dT = 0;
+dT = linspace(-1.99*T0, 1.99*T0, 30);
+d_mu = linspace(-1.99*mu0, 1.99*mu0, 30);
+
 for deltaT = dT
     for delta_mu = d_mu                 % difference of spin voltage bias, unit: meV
         T_L = T0 + deltaT./2.0;               % left lead temperature, unit: K
@@ -48,7 +46,7 @@ for deltaT = dT
         mu_down = mu0 - delta_mu./2.0;  % spin-down chemical, unit: meV
 
         % Bosonic distribution
-        N_L = @(omega) 1./(exp(beta_L.*(omega + delta_mu)) - 1);
+        N_L = @(delta_mu) 1./(exp(beta_L.*delta_mu) - 1);
         N_R = @(omega) 1./(exp(beta_R.*(omega + delta_mu)) - 1);
         
         % Fermionic distribution
@@ -56,20 +54,23 @@ for deltaT = dT
         f_L_down = @(E) 1./(exp(beta_L.*(E-mu_down))+1);
 
         % define integrant
-        my_integrant2 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
+        current_integrant2 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(delta_mu)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
+        heat_integrant2 = @(E, omega) omega.*rho(omega) .* (N_R(omega) - N_L(delta_mu)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
-        % currt = integral2(my_integrant2, E_lower, E_upper, -10*omegac, 10*omegac);
-        currt = quad2d(my_integrant2, E_lower, E_upper, -200, 200, 'Singular', true);%, 'MaxFunEvals', 90000);
+        currt = quad2d(current_integrant2, -100, 100, -100, 100, 'Singular', true, 'MaxFunEvals', 10000);
+        %heat = quad2d(heat_integrant2, -100, 100, -100, 100, 'Singular', true, 'MaxFunEvals', 10000);
         fprintf(fileID, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, currt);
-        currt
+        %fprintf(fileID2, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, heat);
+        %currt
 
         %==================================================================================
-        % plot the integrant function
-        x = linspace(-500, 500, 10000);
-        y = linspace(-10*omegac, 10*omegac, 10000);
-        plot3(x, y, my_integrant2(x, y));
-        xlabel('E')
-        ylabel('omega')
+        % % plot the integrant function
+        % x = linspace(-200, 200, 10000);
+        % y = linspace(-3*omegac, 3*omegac, 10000);
+        % plot3(x, y, current_integrant2(x, y));
+        % xlabel('E');
+        % ylabel('omega');
+        % text(100, 100, 0.04, 'dT=-500,d\_mu=-40,E0\_up=30,E0\_down=35,Gamma0=4,mu0=32.5,\{-200,200\}');
         %==================================================================================
 
     end
@@ -86,9 +87,10 @@ end
 %==================================================================================
 % x = linspace(-500, 500, 10000);
 % y = linspace(-10*omegac, 10*omegac, 10000);
-% plot3(x, y, my_integrant2(x, y));
+% plot3(x, y, current_integrant2(x, y));
 % xlabel('E')
 % ylabel('omega')
+% text(100, 100, 0.04, 'dT=-500,d\_mu=-40,E0\_up=30,E0\_down=35,Gamma0=4,mu0=32.5,\{-200,200\}');
 %==================================================================================
 %functions
 
@@ -98,9 +100,9 @@ end
 % end
 
 % integrant
-function out = integrant1(E, omega)
-   out = rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
-end
+% function out = integrant1(E, omega)
+%    out = rho(omega) .* (N_R(omega) - N_L(delta_mu)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
+% end
 
 % matrix A
 function out = A(E, omega)
