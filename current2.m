@@ -16,11 +16,11 @@ global omegac alpha E0_up E0_down Gamma0 W delta_mu beta_L beta_R mu_up mu_down
 
 omegac = 80;                            % cutoff frequency, unit: meV
 alpha = 0.2;                            % disspation strength, dimensionless
-T_R = 300;                               % average temperature, unit:K
-mu_down = -5;                         % average spin baias, unit: meV
-E0_up = 10;                              % QD up level, unit: meV
-E0_down = 15;                           % QD down level, unit: meV
-Gamma0=6;                               % effective coupling, unit:meV
+T0 = 300;                               % average temperature, unit:K
+mu0 = -10;                         % average spin baias, unit: meV
+E0_up = -5;                              % QD up level, unit: meV
+E0_down = 5;                           % QD down level, unit: meV
+Gamma0=1;                               % effective coupling, unit:meV
 W=80;                                   % bandwidth of left metal lead Lorentz spectral
 
 %==================================================================================
@@ -30,29 +30,30 @@ W=80;                                   % bandwidth of left metal lead Lorentz s
 %calculate current
 fileID = fopen('current.txt','w');
 %fileID2 = fopen('heat.txt','w');
-%d_mu = 0;
-dT = 0;
-%dT = linspace(-T_R+0.1, T_R-0.1, 50);
-% dT = linspace(-T_R+1, T_R, 80);
-d_mu = linspace(-20, 20, 30);
+% d_mu = 0;
+% dT = 0;
+dT = linspace(-1.999*T0, 1.999*T0, 30);
+d_mu = linspace(-80, 80, 30);
 
 for deltaT = dT
     for delta_mu = d_mu                 % difference of spin voltage bias, unit: meV
-        T_L = T_R + deltaT;               % left lead temperature, unit: K
+        T_L = T0 + deltaT./2.0;               % left lead temperature, unit: K
+        T_R = T0 - deltaT./2.0;               % left lead temperature, unit: K
         beta_L = 1./(k_B.*T_L./meV);    % beta of left metal lead, unit: meV^-1
         beta_R = 1./(k_B.*T_R./meV);      % beta of right MI lead, unit: meV^-1
-        mu_up = mu_down + delta_mu;    % spin-up chemical, unit: meV
+        mu_up = mu0 - delta_mu./2.0;    % spin-up chemical, unit: meV
+        mu_down = mu0 + delta_mu./2.0;    % spin-down chemical, unit: meV
  
         % define integrant
         current_integrant2 = @(E, omega) rho(omega) .* w(E, omega) .* A(E, omega);
-        current_integrant3 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
+        % current_integrant3 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
-        heat_integrant2 = @(E, omega) omega.*rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
+        % heat_integrant2 = @(E, omega) omega.*rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
         currt = quad2d(current_integrant2, -100, 100, 0, 100, 'Singular', true, 'MaxFunEvals', 10000);
-        currt2 = quad2d(current_integrant3, -100, 100, 0, 100, 'Singular', true, 'MaxFunEvals', 10000);
+        % currt2 = quad2d(current_integrant3, -100, 100, 0, 100, 'Singular', true, 'MaxFunEvals', 10000);
         %heat = quad2d(heat_integrant2, -100, 100, -100, 100, 'Singular', true, 'MaxFunEvals', 10000);
-        fprintf(fileID, '%-15.10g%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, -currt, -currt2);
+        fprintf(fileID, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, -currt);
         %fprintf(fileID2, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, heat);
         %currt
 
@@ -131,7 +132,7 @@ end
 
 function out = N_L(omega)
     global beta_L delta_mu
-    out = 1./(exp(beta_L.*(omega+delta_mu)) - 1);
+    out = 1./(exp(beta_L.*(omega-delta_mu)) - 1);
 end
 
 function out = N_R(omega)

@@ -261,9 +261,6 @@ We have
 \begin{equation}
 G_{d}^{>}(E)-G_{d}^{<}(E)=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right)\left(G_{L \uparrow}^{<} G_{L \downarrow}^{>}-G_{L \uparrow}^{>} G_{L \downarrow}^{<}\right)\left(1+\Sigma_{R}^{a} G_{d}^{a}\right)+G_{d}^{r}\left(\Sigma_{R}^{>}-\Sigma_{R}^{<}\right) G_{d}^{a}
 \end{equation}
-\begin{equation}
-\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R}^{<} = \left[-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right)\left(G_{L \uparrow}^{<} G_{L \downarrow}^{>}-G_{L \uparrow}^{>} G_{L \downarrow}^{<}\right)\left(1+\Sigma_{R}^{a} G_{d}^{a}\right)+G_{d}^{r}\left(\Sigma_{R}^{>}-\Sigma_{R}^{<}\right) G_{d}^{a} \right]\Sigma_{R}^{<}
-\end{equation}
 Fourier transformation
 \begin{equation}
 G_{d}^{<}(E) = \int_{-\infty}^{+\infty} dt G_{d}^{<}(t-t')e^{iE(t-t')}
@@ -294,7 +291,13 @@ G_{L,mn\sigma}^{>}(E) &= -(G_{L,mn\sigma}^{<}(E))^{\dag} \\
 &=iD_{L\sigma}(f_{L\uparrow}(E) - 1)
 \end{split}
 \end{equation}
-in which, $D_{L\sigma} = G_{L\sigma}^{r}\Gamma_{L\sigma}G_{L\sigma}^{a}$.
+in which, $D_{L\sigma} = G_{L\sigma}^{r}\Gamma_{L\sigma}G_{L\sigma}^{a}$, thus
+\begin{equation}
+\begin{split}
+G_{L\sigma}^{<} G_{L\sigma}^{>} - G_{L\sigma}^{>} G_{L\sigma}^{<} &= D_{L\uparrow}D_{L\downarrow} [(f_{L\uparrow}-1)f_{L\downarrow} - (f_{L\downarrow}-1) f_{L\uparrow}] \\
+&= D_{L\uparrow}D_{L\downarrow} (f_{L\uparrow} - f_{L\downarrow})
+\end{split}
+\end{equation}
 \begin{equation}
 \begin{split}
 \Sigma_{R}^{<}(E) &=  \sum_{q_{1}}J_{q_{1}}^{2} g_{Rq_{1}}^{<}(E) \\
@@ -305,16 +308,17 @@ in which, $D_{L\sigma} = G_{L\sigma}^{r}\Gamma_{L\sigma}G_{L\sigma}^{a}$.
 \Sigma_{R}^{a} - \Sigma_{R}^{r} = \Sigma_{R}^{<} - \Sigma_{R}^{>} = i\Gamma_{R}(E).
 \end{equation}
 \begin{equation}
-G_{d}^{>}-G_{d}^{<}=i\left[f_{L \uparrow}-f_{L \downarrow}\right]\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right)-i G_{d}^{r} \Gamma_{R q} G_{d}^{a}
+G_{d}^{>}-G_{d}^{<}=-i\left[f_{L \uparrow}-f_{L \downarrow}\right]\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right)-i G_{d}^{r} \Gamma_{R q} G_{d}^{a}
 \end{equation}
 \begin{equation}
 \begin{aligned}
-\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) &=-\left[\left(f_{L \uparrow}-f_{L \downarrow}\right) f_{R}+\left(f_{L \uparrow}-1\right) f_{L \downarrow}\right] \\ & \times\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) \Gamma_{R q} 
+\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) &=\left[\left(f_{L \uparrow}-f_{L \downarrow}\right) f_{R}+\left(f_{L \uparrow}-1\right) f_{L \downarrow}\right] \\ & \times\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) \Gamma_{R q} 
 \end{aligned}
+\label{eq:diff}
 \end{equation}
 The following formula exists
 \begin{equation}
-\left(f_{L \uparrow}-1\right) f_{L \downarrow}=-\left(f_{L \uparrow}-f_{L \downarrow}\right) f_{L}^{B}
+[f_{L \uparrow}(\varepsilon)-1] f_{L \downarrow}(\varepsilon) =-[f_{L \uparrow}(\varepsilon) -f_{L \downarrow}(\varepsilon)] f_{L}^{B}
 \end{equation}
 where,
 \begin{equation}
@@ -323,8 +327,27 @@ f_{L \sigma}(\epsilon)=\frac{1}{e^{\beta_{L}(\epsilon-\mu_{\sigma})}+1}
 \begin{equation}
 f_{L}^{B}= \frac{1}{e^{\beta_{L}\Delta \mu_{s}}-1 }
 \end{equation}
-$\Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$ ($\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}$?).
+$\Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$ ($\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}$?). Note that this similar relation also exists,
+\begin{equation}
+\left(f_{L \uparrow}(\varepsilon)-1\right) f_{L \downarrow}(\varepsilon+\omega)=-[f_{L \uparrow}(\varepsilon) - f_{L \downarrow}(\varepsilon+\omega)] f_{L}^{B}(\omega)
+\end{equation}
+\begin{equation}
+f_{L}^{B}(\varepsilon) = \frac{1}{e^{\beta_{L}(\omega+\Delta \mu_{s})}-1 },
+\end{equation}
+is the effective Boson-Einstein distribution of left electronic lead. Eq. (\ref{eq:diff}) becomes
+\begin{equation}
+\begin{aligned}
+\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) &=\left[\left(f_{L \uparrow}-f_{L \downarrow}\right) (f_{R} -  f_{L}^{B}) \right] \\ & \times\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) \Gamma_{R q} 
+\end{aligned}
+\end{equation}
 Substitute in Eq. (\ref{eq:current1}), we get
+\begin{equation}
+I_{s R}=\int d \omega \rho_{R}(\omega)\left(f_{R}(\omega)-f_{L}^{B}(\omega)\right) \int d E\left(f_{L \uparrow}(E)-f_{L \downarrow}(E+\omega)\right) \operatorname{Tr}[A(E, \omega)],
+\end{equation}
+\begin{equation}
+A(E, \omega)=\left[G_{d}^{r}(E) \Sigma_{R q}^{r}(\omega)+1\right] D_{L \uparrow}(E) D_{L \downarrow}(E+\omega)\left[1+\Sigma_{R q}^{a}(\omega) G_{d}^{a}(E)\right].
+\end{equation}
+Above $\rho_{R}(\omega)$ comes from the magnon $q$ summation, is density of states of magnon lead, determined by magnon dispersion $\omega_{q}$.
 \subsection{Spin current from the left lead}
 Define spin density operator
 \begin{equation}

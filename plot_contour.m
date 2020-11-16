@@ -4,10 +4,11 @@ deltaT = data(:,1);
 delta_mu = data(:,2);
 currt = data(:,3);
 
-T0 = 300;                               % average temperature, unit:K
-mu0 = 32.5;                               % average spin baias, unit: meV
-dT = linspace(-1.99*T0, 1.99*T0, 50);
-d_mu = linspace(-1.99*mu0, 1.99*mu0, 50);
+T_R = 300;                               % average temperature, unit:K
+mu_down = 32.5;                         % average spin baias, unit: meV
+
+dT = linspace(-T_R, T_R, 80);
+d_mu = linspace(-mu_down, mu_down, 80);
 [x, y] = meshgrid(dT, d_mu);
 z = griddata(deltaT, delta_mu, currt, x, y);
 

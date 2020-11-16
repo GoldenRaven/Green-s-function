@@ -30,11 +30,11 @@ W=80;                                   % bandwidth of left metal lead Lorentz s
 %calculate current
 fileID = fopen('current.txt','w');
 %fileID2 = fopen('heat.txt','w');
-%d_mu = 0;
-dT = 0;
-%dT = linspace(-T_R+0.1, T_R-0.1, 50);
+d_mu = 0;
+%dT = 0;
+dT = linspace(-T_R+1, T_R, 50);
 % dT = linspace(-T_R+1, T_R, 80);
-d_mu = linspace(-20, 20, 30);
+% d_mu = linspace(-20, 20, 50);
 
 for deltaT = dT
     for delta_mu = d_mu                 % difference of spin voltage bias, unit: meV
@@ -45,14 +45,13 @@ for deltaT = dT
  
         % define integrant
         current_integrant2 = @(E, omega) rho(omega) .* w(E, omega) .* A(E, omega);
-        current_integrant3 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
+        % current_integrant3 = @(E, omega) rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
         heat_integrant2 = @(E, omega) omega.*rho(omega) .* (N_R(omega) - N_L(omega)) .* (f_L_up(E) - f_L_down(E+omega)) .* A(E, omega);
 
-        currt = quad2d(current_integrant2, -100, 100, 0, 100, 'Singular', true, 'MaxFunEvals', 10000);
-        currt2 = quad2d(current_integrant3, -100, 100, 0, 100, 'Singular', true, 'MaxFunEvals', 10000);
+        currt = quad2d(current_integrant2, -100, 100, -100, 100, 'Singular', true, 'MaxFunEvals', 10000);
         %heat = quad2d(heat_integrant2, -100, 100, -100, 100, 'Singular', true, 'MaxFunEvals', 10000);
-        fprintf(fileID, '%-15.10g%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, -currt, -currt2);
+        fprintf(fileID, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, -currt);
         %fprintf(fileID2, '%-15.10g%-15.10g%-15.10g\n',deltaT, delta_mu, heat);
         %currt
 
@@ -99,8 +98,10 @@ end
 
 % matrix A
 function out = A(E, omega)
-    out = DL_up(E).*DL_down(E+omega);
-    %out = 1.0;                          % Ren Jie's case
+    %Gamma_R = @(omega) rho(omega).*2.*pi;
+    %out = DL_up(E).*DL_down(E+omega);
+    %out = DL_up(E).*DL_down(E+omega).*Gamma_R(omega);
+    out = 1.0;                          % Ren Jie's case
 end
 
 function out = rho(omega)
@@ -125,13 +126,14 @@ function out = Gamma_L(E)
     %out = Gamma0.*W.*W./(2*pi*(E.*E+W.*W));
 end
 
+
 function out = w(E, omega)
-    out = f_L_up(E).*(1-f_L_down(E+omega)).*N_R(omega) - f_L_down(E+omega).*(1-f_L_up(E)).*(1+N_R(omega));
+    out = f_L_down(E+omega).*(1-f_L_up(E)).*(1+N_R(omega)) - f_L_up(E).*(1-f_L_down(E+omega)).*N_R(omega);
 end
 
 function out = N_L(omega)
     global beta_L delta_mu
-    out = 1./(exp(beta_L.*(omega+delta_mu)) - 1);
+    out = exp(beta_L.*(omega+delta_mu)) - 1;
 end
 
 function out = N_R(omega)
