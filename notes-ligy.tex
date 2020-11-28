@@ -62,6 +62,19 @@ i \dot{d}_{n \uparrow}=\epsilon_{n \uparrow} d_{n \uparrow}+\sum_{k} t_{k \uparr
 i \dot{d}_{n \downarrow}=\epsilon_{n \downarrow} d_{n \downarrow}+\sum_{k} t_{k \downarrow n}^{*} c_{k \downarrow}-\sum_{q, m} J_{q} a_{q}d_{m \uparrow}\delta(\epsilon_{m \uparrow}-\epsilon_{n \downarrow}-\omega_{q})
 \end{equation}
 \subsection{spin current ???}
+Define
+\begin{equation}
+G_{d, R}\left(\tau, \tau^{\prime}\right)=-i\langle s_{q}^{+}(\tau) a_{q}^{\dag}(\tau')\rangle.
+\end{equation}
+The lesser Green's function is($s_{q}^{+}$ is fermionic but $a_{q}$ is bosonic)
+\begin{equation}
+G_{d, R}^{<}\left(t, t'\right)=-i\langle  a_{q}^{\dag}(t') s_{q}^{+}(t) \rangle
+\end{equation}
+We also define the Green’s function that is related to the QD (not the Green’s function of the QD),
+\begin{equation}
+G_{d}\left(\tau, \tau^{\prime}\right)= -i\left\langle T_{c} S s_{q}^{+}(\tau) s_{q}^{-}\left(\tau^{\prime}\right)\right\rangle .
+\end{equation}
+We have
 \begin{equation}
 -i \partial_{\tau^{\prime}} G_{d, R}\left(\tau, \tau^{\prime}\right)=\omega_{q} G_{d, R}\left(\tau, \tau^{\prime}\right)-J_{q} G_{d}
 \end{equation}
@@ -73,20 +86,25 @@ or
 \begin{equation}
 G_{d, R}\left(\tau, \tau^{\prime}\right)=-J_{q} \int G_{d}\left(\tau, \tau_{1}\right) g_{R q}\left(\tau_{1}, \tau^{\prime}\right) d \tau_{1}
 \end{equation}
-the minus before $J_{q}$ originates from the minus in $H_{sd}$. The lesser Green's function is($s_{q}^{+}$ is fermionic but $a_{q}$ is bosonic)
+the minus before $J_{q}$ originates from the minus in $H_{sd}$. The rules of analytic continuation gives
 \begin{equation}
-G_{d, R}^{<}\left(\tau, \tau^{\prime}\right)=i\langle s_{q}^{+}(\tau) a_{q}^{\dag}(\tau')\rangle
+G_{d, R}^{<}\left(t, t^{\prime}\right)=-J_{q} \int_{-\infty}^{\infty}dt_{1} [G_{d}^{r}\left(t, t_{1}\right) g_{R q}^{<}\left(t_{1}, t^{\prime}\right) + G_{d}^{<}\left(t, t_{1}\right) g_{R q}^{a}\left(t_{1}, t^{\prime}\right)]
 \end{equation}
+and
+\begin{equation}
+G_{R,d}^{<}\left(t, t^{\prime}\right)=-J_{q} \int_{-\infty}^{\infty}dt_{1} [g_{R q}^{r}\left(t, t_{1}\right) G_{d}^{<}\left(t_{1}, t'\right)  + g_{R q}^{<}\left(t, t_{1}\right) G_{d}^{a}\left(t_{1}, t'\right)]
+\end{equation}
+The spin current flows out of right lead is
 \begin{equation}
 \begin{split}
 I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
-&=\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
-&=-2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[G_{d}^{r}\left(t, t_{1}\right) \Sigma_{R}^{<}\left(t_{1}, t^{\prime}\right)+G_{d}^{<}\left(t, t_{1}\right) \Sigma_{R}^{a}\left(t_{1}, t^{\prime}\right)\right]\\
-&= -2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
+&=-\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
+&=2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[G_{d}^{r}\left(t, t_{1}\right) \Sigma_{Rq}^{<}\left(t_{1}, t^{\prime}\right)+G_{d}^{<}\left(t, t_{1}\right) \Sigma_{Rq}^{a}\left(t_{1}, t^{\prime}\right)\right]
+% \\ &=2\rm{Re}\sum_{q} \int  d t_{1}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
 \end{split}
 \end{equation}
 \begin{equation}
-\Sigma_{Rq}(\tau, \tau')=J_{q}^{2}g_{Rq}(\tau, \tau')
+\Sigma_{Rq}^{\gamma}(\tau, \tau')=J_{q}^{2}g_{Rq}^{\gamma}(\tau, \tau')
 \end{equation}
 \subsection{Calculation of $G_{d}$}
 Definition:
@@ -97,24 +115,27 @@ G_{d}\left(\tau, \tau^{\prime}\right)&=
 &=-i\sum_{mnm'n'}\langle T_{c}S d_{n \uparrow}^{\dagger} d_{m \downarrow} d_{m' \downarrow}^{\dagger} d_{n' \uparrow} \rangle \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right) 
 \end{split}
 \end{equation}
-When right lead is absent,
+When right lead is absent, the system Hamiltonian is
 \begin{equation}
-G_{d}\left(\tau, \tau^{\prime}\right)&=-i\sum_{mnm'n'}G_{L,n'n\uparrow}(\tau', \tau) G_{L,mm'\downarrow}(\tau, \tau') \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right) \\
+H = H_{L} + H_{d} + H_{T}.
+\end{equation}
+\begin{equation}
+G_{d}\left(\tau, \tau^{\prime}\right)=-i\sum_{mnm'n'}G_{L,n'n\uparrow}(\tau', \tau) G_{L,mm'\downarrow}(\tau, \tau') \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right)
 \end{equation}
 where
 \begin{equation}
 \begin{split}
 G_{L,mn\sigma}(\tau, \tau')&= -i\langle T_{c}d_{m\sigma}(\tau) d_{n\sigma}^{\dag}(\tau')\rangle \\
-&=g_{n\sigma}(\tau, \tau')\delta_{mn} \\
-&~~~+ \iint d\tau_{1}d\tau_{2} g_{m\sigma}(\tau, \tau_{2}) \sum_{k} t_{k\sigma n}t_{k\sigma m}^{*} g_{k\sigma}(\tau_{2}, \tau_{1}) g_{n\sigma}(\tau_{1}, \tau') \\
+&=g_{mn\sigma}(\tau, \tau')\delta_{mn} \\
+&~~~+ \iint d\tau_{1}d\tau_{2} g_{mm\sigma}(\tau, \tau_{2}) \sum_{k} t_{k\sigma n}t_{k\sigma m}^{*} g_{k\sigma}(\tau_{2}, \tau_{1}) g_{nn\sigma}(\tau_{1}, \tau') \\
 &~~~ +\cdots \\
-&=g_{n\sigma}(\tau, \tau')\delta_{mn} + \iint d\tau_{1}d\tau_{2} g_{m\sigma}(\tau, \tau_{2}) \Sigma_{L,mn\sigma}(\tau_{2}, \tau_{1}) g_{n\sigma}(\tau_{1}, \tau')\\
+&=g_{mn\sigma}(\tau, \tau')\delta_{mn} + \iint d\tau_{1}d\tau_{2} g_{mm\sigma}(\tau, \tau_{2}) \Sigma_{L,mn\sigma}(\tau_{2}, \tau_{1}) g_{nn\sigma}(\tau_{1}, \tau')\\
 &~~~+ \cdots \\
-&= ~~~?
+&= 1 /\left[g_{mn \sigma}^{-1}-\Sigma_{L,mn \sigma}\right]
 \end{split}
 \end{equation}
 \begin{equation}
-g_{n\sigma}(\tau, \tau') = -i\langle T_{c}d_{n}(\tau) d_{n\sigma}^{\dag}(\tau')\rangle_{0}
+g_{mn\sigma}(\tau, \tau') = -i\langle T_{c}d_{m\sigma}(\tau) d_{n\sigma}^{\dag}(\tau')\rangle_{0}
 \end{equation}
 Self-energy of left lead
 \begin{equation}
@@ -125,7 +146,10 @@ where
 g_{k\sigma}(\tau_{2}, \tau_{1}) = -i\langle T_{c}c_{k\sigma}(\tau_{2}) c_{k\sigma}^{\dag}(\tau_{1})\rangle_{0}.
 \label{eq:left-self-energy}
 \end{equation}
-When left lead is absent,
+When left lead is absent, system Hamiltonian is
+\begin{equation}
+H = H_{d} + H_{R} + H_{sd}.
+\end{equation}
 \begin{equation}
 \begin{split}
 G_{d}\left(\tau, \tau^{\prime}\right) =&-i\sum_{mn} g_{n \uparrow}\left(\tau^{\prime}, \tau\right) g_{m \downarrow}\left(\tau, \tau^{\prime}\right) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q})\\
@@ -141,7 +165,7 @@ g_{d}\left(\tau, \tau^{\prime}\right) = -i\sum_{mn} g_{n \uparrow}\left(\tau^{\p
 \end{equation}
 the self-energy of right lead is
 \begin{equation}
-\Sigma_{R,mnm'n'}(\tau_{1}, \tau_{2}) = -i\sum_{q1}J_{q_{1}}^{2} g_{Rq_{1}}(\tau_{1}, \tau_{2}) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q_{1}})\delta(\varepsilon_{n'\uparrow} - \varepsilon_{m'\downarrow} - \omega_{q_{1}})
+\Sigma_{R,mnm'n'}(\tau_{1}, \tau_{2}) = \sum_{q1}J_{q_{1}}^{2} g_{Rq_{1}}(\tau_{1}, \tau_{2}) \delta(\varepsilon_{n\uparrow} - \varepsilon_{m\downarrow} - \omega_{q_{1}})\delta(\varepsilon_{n'\uparrow} - \varepsilon_{m'\downarrow} - \omega_{q_{1}})
 \end{equation}
 \begin{equation}
 g_{Rq_{1}}(\tau_{1}, \tau_{2}) = -i\langle T_{c}a_{q_{1}}(\tau_{1}) a_{q_{1}}^{\dag}(\tau_{2})\rangle_{0}
@@ -149,16 +173,15 @@ g_{Rq_{1}}(\tau_{1}, \tau_{2}) = -i\langle T_{c}a_{q_{1}}(\tau_{1}) a_{q_{1}}^{\
 Hence, when both leads are present, we have
 \begin{equation}
 \begin{split}
-{\color{red}{\Large{?}}}~~G_{d}\left(\tau, \tau^{\prime}\right)=&-i \sum_{mnm'n'}G_{L,nn' \uparrow}\left(\tau^{\prime}, \tau\right) G_{L,mm' \downarrow}\left(\tau, \tau^{\prime}\right)\delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right)\\
+G_{d}\left(\tau, \tau^{\prime}\right)=&-i \sum_{mnm'n'}G_{L,nn' \uparrow}\left(\tau^{\prime}, \tau\right) G_{L,mm' \downarrow}\left(\tau, \tau^{\prime}\right)\delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right) \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right)\\
 &-i \sum_{mnm'n'}G_{L,nn' \uparrow}\left(\tau_{1}, \tau\right) G_{L,mm' \downarrow}\left(\tau, \tau_{1}\right) \Sigma_{R,mnm'n'}\left(\tau_{1}, \tau_{2}\right) G_{d}\left(\tau_{2}, \tau^{\prime}\right) \delta\left(\epsilon_{n \uparrow}-\epsilon_{m \downarrow}-\omega_{q}\right)\\
 &\qquad\times \delta\left(\epsilon_{n' \uparrow}-\epsilon_{m' \downarrow}-\omega_{q}\right)
 \label{eq:1}
 \end{split}
 \end{equation}
-For the sack of convenience, we rewrite the above formula as follows.
+For the sack of convenience, we rewrite the above formula in matrix presentation as follows(the matrix indices are QD level indices $m,n$, not corrected yet!), and omit energy conservation constrain.
 \begin{equation}
-{\color{red}{\Large{?}}}~~G_{d}\left(\tau, \tau^{\prime}\right)=-i G_{L \uparrow}\left(\tau^{\prime}, \tau\right) G_{L \downarrow}\left(\tau, \tau^{\prime}\right)-i G_{L \uparrow}\left(\tau_{1}, \tau\right) G_{L \downarrow}\left(\tau, \tau_{1}\right) \Sigma_{R }\left(\tau_{1}, \tau_{2}\right) G_{d}\left(\tau_{2}, \tau^{\prime}\right)
-\label{eq:1}
+{\color{red}{?}}~~G_{d}\left(\tau, \tau^{\prime}\right)=-i G_{L \uparrow}\left(\tau^{\prime}, \tau\right) G_{L \downarrow}\left(\tau, \tau^{\prime}\right)-i G_{L \uparrow}\left(\tau_{1}, \tau\right) G_{L \downarrow}\left(\tau, \tau_{1}\right) \Sigma_{R }\left(\tau_{1}, \tau_{2}\right) G_{d}\left(\tau_{2}, \tau^{\prime}\right)
 \end{equation}
 \subsection{continuation on Eq.(\ref{eq:1})}
 \begin{eqnarray}
@@ -249,12 +272,7 @@ G_{d}^{>}=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right) G_{L \uparrow}^{<} G_{L \dow
 \subsection{DC spin current}
 
 \begin{equation}
-\begin{split}
-I_{s}&= i \sum_{q} J_{q}\left(\left\langle s_{q}^{+} a_{q}^{\dagger}\right\rangle-\left\langle a_{q} s_{q}^{-}\right\rangle\right) \\
-&=\sum_{q}J_{q}(G_{d,R}^{<}(t,t)-G_{R,d}^{<}(t,t)) \\
-&= -2\rm{Re}\sum_{q} \int  \frac{dE}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
-\end{split}
-\label{eq:current1}
+I_{s}= 2\rm{Re}\sum_{q} \int  \frac{dE}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
 \end{equation}
 
 We have
@@ -280,7 +298,6 @@ where $G_{L,mn\sigma}$ is the Green's function when left free lead, QD and left 
 \end{equation}
 so,
 \begin{equation}
-  \label{eq:3}
 G_{L,mn\sigma}^{<}(E) = iG_{L,mn\sigma}^{r}f_{L\sigma}(E) \Gamma_{L,mn\sigma}(E) G_{L,mn\sigma}^{a}(E)  \equiv i D_{L \sigma} f_{L \sigma},
 \end{equation}
 and

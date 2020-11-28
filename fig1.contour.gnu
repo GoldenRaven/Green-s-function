@@ -1,5 +1,4 @@
-set terminal postscript font "Times,16" ps 2
-# set terminal pdf font "Times,8" ps 0.4
+set terminal pdf font "Times,12" ps 0.5
 set output 'Is.pdf'
 set grid
 set multiplot layout 1,2
@@ -18,6 +17,7 @@ plot 'I-mu.txt' u 1:2 w lp t '{/Symbol D}T=0, T_0=300K'
 unset multiplot
 set output
 
+set terminal postscript font "Times,16" ps 2
 set output 'Is-2D.eps'
 set pm3d map
 set size square
