@@ -410,19 +410,57 @@ which is $0.537$ meV for first subband, effective mass $m=0.07m_{e}$, and width 
 \subsection{Low temperature}
 In transport problem, the Landauer type formula has term of the difference of two Fermionic distribution. Generally, this constrains the range of integrating variable to $[-\frac{T}{2}, \frac{T}{2}]$ or $[\mu_{1}, \mu_{2}]$.
 \subsection{Physical consideration}
-Usually, only several subbands or transverse modes are investigated, which suggests the integrating range to $[-\frac{T}{2}, E_{i}]$.
+Usually, only several subbands or transverse modes are investigated, which suggests the integrating range of $[-\frac{T}{2}, E_{i+1}]$ to include i subbands, with $E_i$ the $i$th subband energy threshold. When integrating a very high energy, 
 \subsection{Repalcing repeating calculations by interpolation}
 If a complex manipulation, like matrix inverse, is contained in a loop,
 we can take the matrix inverse out of loop, and replace it with an interpolation of inversed matrice calculated earlier. Interpolating by
 \begin{equation}
 f(c) = \frac{f(a) - f(b)}{a-b}\times (c-a) + f(a).
 \end{equation}
-\subsection{$Tr[\Gamma_{Rq}D_{L\uparrow}(E)D_{L\uparrow}(E+\omega)\Gamma_{Rq}]$}
-
-
-
-
-
+\subsection{$Tr[\Gamma_{Rq}'D_{L\uparrow}(E)D_{L\uparrow}(E+\omega)\Gamma_{Rq}']$}
+$\Gamma_{Rq}'$ is block matrix of dimension  $n_{wid}n_{len}\times n_{wid}n_{len}$, with only $I_{n_{wid}\times n_{wid}}$ block. For n\_wid=3, n\_len=5, we have
+\begin{equation}
+\Gamma_{Rq}' = \left[\begin{array}{ccccc}
+I_{n_{wid}\times n_{wid}} & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{array}\right].
+\end{equation}
+Then,
+\begin{equation}
+\Gamma_{Rq}'D_{L\uparrow} = 
+\left[\begin{array}{ccccc}
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+\rm{x} & \rm{x} & \rm{x} & \rm{x} & \rm{x}
+\end{array}\right],
+\end{equation}
+and
+\begin{equation}
+D_{L\uparrow}\Gamma_{Rq}' = 
+\left[\begin{array}{ccccc}
+0 & 0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & 0 & \rm{x}
+\end{array}\right].
+\end{equation}
+So 
+\begin{equation}
+D_{L\uparrow}\Gamma_{Rq}' = 
+\left[\begin{array}{ccccc}
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & A(E,\omega)
+\end{array}\right].
+\end{equation}
 
 
 
