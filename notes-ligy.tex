@@ -397,6 +397,10 @@ An electron wave guide is a device analogous to light wave guide, in which only 
 \begin{equation}
 k_{y} = \frac{i\pi}{W}, \qquad \text{for i is integers.}
 \end{equation}
+$W$ is the width of wave guide and central area, $a$ is lattice constant of central lattice, $n_{\rm{wid}}$ is number of lattice points in y direction.
+\begin{equation}
+W = n_{\rm{wid}}\times a
+\end{equation}
 To get a propagate wave instead of a decaying wave, the $k_{x}$ must be a real number, or $k_{x}^{2} > 0$. The total injection energy of an election is
 \begin{equation}
 E = \frac{\hbar^{2} (k_{x}^{2}+k_{y}^{2})}{2m} = \frac{\hbar^{2} k_{x}^{2}}{2m} + \frac{i^{2}\hbar^{2} \pi^{2}}{2mW^{2}}.
@@ -417,50 +421,104 @@ we can take the matrix inverse out of loop, and replace it with an interpolation
 \begin{equation}
 f(c) = \frac{f(a) - f(b)}{a-b}\times (c-a) + f(a).
 \end{equation}
-\subsection{$Tr[\Gamma_{Rq}'D_{L\uparrow}(E)D_{L\uparrow}(E+\omega)\Gamma_{Rq}']$}
+\subsection{$Tr[\Gamma_{Rq}'D_{L\uparrow}(E)D_{L\downarrow}(E+\omega)\Gamma_{Rq}']$}
 $\Gamma_{Rq}'$ is block matrix of dimension  $n_{wid}n_{len}\times n_{wid}n_{len}$, with only $I_{n_{wid}\times n_{wid}}$ block. For n\_wid=3, n\_len=5, we have
 \begin{equation}
-\Gamma_{Rq}' = \left[\begin{array}{ccccc}
-I_{n_{wid}\times n_{wid}} & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0
+\Gamma_{L}' = \left[\begin{array}{cccc}
+\Gamma_{3\times 3}^{L} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right],
+\end{equation}
+\begin{equation}
+\Gamma_{Rq}' = \left[\begin{array}{cccc}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & I_{3\times 3}}
+\end{array}\right].
+\end{equation}
+\begin{equation}
+D_{L\uparrow} = G_{L\uparrow}^{r}\Gamma_{L\uparrow}G_{L\uparrow}^{a} = 
+\left[\begin{array}{cccc}
+G_{11}^{r}\Gamma_{3\times3}^{L} & 0 & 0 & 0 \\
+G_{21}^{r}\Gamma_{3\times3}^{L} & 0 & 0 & 0 \\
+G_{31}^{r}\Gamma_{3\times3}^{L} & 0 & 0 & 0 \\
+G_{41}^{r}\Gamma_{3\times3}^{L} & 0 & 0 & 0 \\
+\end{array}\right]
+\left[\begin{array}{cccc}
+G_{11}^{a} & G_{12}^{a} & G_{13}^{a} & G_{14}^{a} \\
+G_{21}^{a} & G_{22}^{a} & G_{23}^{a} & G_{24}^{a} \\
+G_{31}^{a} & G_{32}^{a} & G_{33}^{a} & G_{34}^{a} \\
+G_{41}^{a} & G_{42}^{a} & G_{43}^{a} & G_{44}^{a} \\
 \end{array}\right].
 \end{equation}
 Then,
 \begin{equation}
+\begin{split}
 \Gamma_{Rq}'D_{L\uparrow} = 
-\left[\begin{array}{ccccc}
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-\rm{x} & \rm{x} & \rm{x} & \rm{x} & \rm{x}
-\end{array}\right],
+\left[\begin{array}{cccc}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\rm{x} & \rm{x} & \rm{x} & \rm{x}
+\end{array}\right]
+&= \left[\begin{array}{cccc}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+G_{41}^{r}\Gamma_{3\times3}^{L}G_{11}^{a} & G_{41}^{r}\Gamma_{3\times3}^{L}G_{12}^{a} & G_{41}^{r}\Gamma_{3\times3}^{L}G_{13}^{a} & G_{41}^{r}\Gamma_{3\times3}^{L}G_{14}^{a} \\
+\end{array}\right]
+\end{split}
 \end{equation}
 and
 \begin{equation}
-D_{L\uparrow}\Gamma_{Rq}' = 
-\left[\begin{array}{ccccc}
-0 & 0 & 0 & 0 & \rm{x} \\
-0 & 0 & 0 & 0 & \rm{x} \\
-0 & 0 & 0 & 0 & \rm{x} \\
-0 & 0 & 0 & 0 & \rm{x} \\
-0 & 0 & 0 & 0 & \rm{x}
-\end{array}\right].
+D_{L\downarrow}\Gamma_{Rq}' = 
+\left[\begin{array}{cccc}
+0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & \rm{x} \\
+0 & 0 & 0 & \rm{x}
+\end{array}\right] = 
+\left[\begin{array}{cccc}
+0 & 0 & 0 & G_{11}^{r}\Gamma_{3\times3}^{L}G_{14}^{a}\\
+0 & 0 & 0 & G_{21}^{r}\Gamma_{3\times3}^{L}G_{14}^{a} \\
+0 & 0 & 0 & G_{31}^{r}\Gamma_{3\times3}^{L}G_{14}^{a} \\
+0 & 0 & 0 & G_{41}^{r}\Gamma_{3\times3}^{L}G_{14}^{a} \\
+\end{array}\right]
 \end{equation}
 So 
 \begin{equation}
-D_{L\uparrow}\Gamma_{Rq}' = 
-\left[\begin{array}{ccccc}
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & A(E,\omega)
+\Gamma_{Rq}'D_{L\uparrow}D_{L\downarrow}\Gamma_{Rq}' = 
+\left[\begin{array}{cccc}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & A(E,\omega)
 \end{array}\right].
 \end{equation}
+\begin{equation}
+[A(E, \omega)]_{ij} = G_{41}^{r}\Gamma_{3\times3}^{L}G_{1i}^{a} G_{j1}^{r}\Gamma_{3\times3}^{L}G_{14}^{a},
+\end{equation}
+the advanced Green's function is related to the retarded Green's function by
+\begin{equation}
+G^{a} = [G^{r}]^{\dag},
+\end{equation}
+which gives
+\begin{equation}
+[A(E, \omega)]_{ij} = G_{41}^{r}\Gamma_{3\times3}^{L}[G^{r}]_{1i}^{\dag} G^{r}_{j1}\Gamma_{3\times3}^{L}[G^{r}]_{14}^{\dag}.
+\end{equation}
+Here $G_{ij}^{r}$ is a $3\times 3$ matrix in full matrix G$^{r}$ of dimension $12\times12$, and $\{i, j\}\in [1,2,3,4]$.
+\begin{equation}
+Tr[A(E, \omega)] = \sum_{i}G_{41}^{r}\Gamma_{3\times3}^{L}[G^{r}]_{1i}^{\dag} G^{r}_{i1}\Gamma_{3\times3}^{L}[G^{r}]_{14}^{\dag}.
+\end{equation}
+
+
+
+
+
+
 
 
 
