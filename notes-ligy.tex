@@ -344,7 +344,7 @@ f_{L \sigma}(\epsilon)=\frac{1}{e^{\beta_{L}(\epsilon-\mu_{\sigma})}+1}
 \begin{equation}
 f_{L}^{B}= \frac{1}{e^{\beta_{L}\Delta \mu_{s}}-1 }
 \end{equation}
-$\Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$ ($\omega = \varepsilon_{\downarrow} - \varepsilon_{\uparrow}$?). Note that this similar relation also exists,
+$\Delta\mu_{s}=\mu_{\uparrow}-\mu_{\downarrow}$. Note that this similar relation also exists,
 \begin{equation}
 \left(f_{L \uparrow}(\varepsilon)-1\right) f_{L \downarrow}(\varepsilon+\omega)=-[f_{L \uparrow}(\varepsilon) - f_{L \downarrow}(\varepsilon+\omega)] f_{L}^{B}(\omega)
 \end{equation}
@@ -357,6 +357,18 @@ is the effective Boson-Einstein distribution of left electronic lead. Eq. (\ref{
 \left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right) &=\left[\left(f_{L \uparrow}-f_{L \downarrow}\right) (f_{R} -  f_{L}^{B}) \right] \\ & \times\left(G_{d}^{r} \Sigma_{R q}^{r}+1\right) D_{L \uparrow} D_{L \downarrow}\left(1+\Sigma_{R q}^{a} G_{d}^{a}\right) \Gamma_{R q} 
 \end{aligned}
 \end{equation}
+If we assume a Ohmic spectra, $s=1$ for
+\begin{equation}
+J_{R}(\omega)=\pi \alpha \omega^{s} \omega_{c}^{1-s} e^{-\omega / \omega_{c}}
+\end{equation}
+and
+\begin{equation}
+\Sigma_{R}^{r}=-i J_{R}(\omega) / 2
+\end{equation}
+then
+\begin{equation}
+\Gamma_{Rq} = i(\Sigma_{R}^{r} - \Sigma_{R}^{a}) = J_{R}(\omega)
+\end{equation}
 Substitute in Eq. (\ref{eq:current1}), we get
 \begin{equation}
 I_{s R}=\int d \omega \rho_{R}(\omega)\left(f_{R}(\omega)-f_{L}^{B}(\omega)\right) \int d E\left(f_{L \uparrow}(E)-f_{L \downarrow}(E+\omega)\right) \operatorname{Tr}[A(E, \omega)],
@@ -364,7 +376,7 @@ I_{s R}=\int d \omega \rho_{R}(\omega)\left(f_{R}(\omega)-f_{L}^{B}(\omega)\righ
 \begin{equation}
 A(E, \omega)=\left[G_{d}^{r}(E) \Sigma_{R q}^{r}(\omega)+1\right] D_{L \uparrow}(E) D_{L \downarrow}(E+\omega)\left[1+\Sigma_{R q}^{a}(\omega) G_{d}^{a}(E)\right].
 \end{equation}
-Above $\rho_{R}(\omega)$ comes from the magnon $q$ summation, is density of states of magnon lead, determined by magnon dispersion $\omega_{q}$.
+Above $\rho_{R}(\omega)$ comes from the magnon $q$ summation, is density of states of magnon lead, determined by magnon dispersion $\omega_{q}$. Note after taking $\rho$ out of $\Gamma_{R}(\omega)$, a block matrix is left in $A(E,\omega)$.
 \subsection{Spin current from the left lead}
 Define spin density operator
 \begin{equation}
@@ -379,7 +391,36 @@ I_{\sigma}=\operatorname{Tr}\left[\left(G_{d \sigma}^{r}-G_{d \sigma}^{a}\right)
 \begin{equation}
 \left[G_{d \sigma}\right]_{n m}=-i\left\langle T_{c} S d_{n \sigma} d_{m \sigma}^{\dagger}\right\rangle
 \end{equation}
-the factor of 1/2 comes from spin of electron while spin of magnon is 1.
+the factor of 1/2 comes from spin of electron while spin of magnon is 1. Considering the continious condition of current, we should have relation $I_{L} + I_{R} = 0$.
+\section{Transportation in a electron wave guide}
+An electron wave guide is a device analogous to light wave guide, in which only small number of electron wave modes can propagate. Reference to exercise 1.3 and 1.4 in S. Datta's book. For case one, in y direction, the wave guide is constrained in a hard-well potential. $U(y < -W/2) = U(y > W/2) = \infty, U(-W/2 < y < W/2) = 0$, leads to the quantization of electron states.
+\begin{equation}
+k_{y} = \frac{i\pi}{W}, \qquad \text{for i is integers.}
+\end{equation}
+To get a propagate wave instead of a decaying wave, the $k_{x}$ must be a real number, or $k_{x}^{2} > 0$. The total injection energy of an election is
+\begin{equation}
+E = \frac{\hbar^{2} (k_{x}^{2}+k_{y}^{2})}{2m} = \frac{\hbar^{2} k_{x}^{2}}{2m} + \frac{i^{2}\hbar^{2} \pi^{2}}{2mW^{2}}.
+\end{equation}
+So the threshold for $i$th subband or transverse mode is
+\begin{equation}
+E_{i} = \frac{i^{2}\hbar^{2} \pi^{2}}{2mW^{2}},
+\end{equation}
+which is $0.537$ meV for first subband, effective mass $m=0.07m_{e}$, and width $W = 100nm$.
+\section{Ways to reduce time-consuming}
+\subsection{Low temperature}
+In transport problem, the Landauer type formula has term of the difference of two Fermionic distribution. Generally, this constrains the range of integrating variable to $[-\frac{T}{2}, \frac{T}{2}]$ or $[\mu_{1}, \mu_{2}]$.
+\subsection{Physical consideration}
+Usually, only several subbands or transverse modes are investigated, which suggests the integrating range to $[-\frac{T}{2}, E_{i}]$.
+\subsection{Repalcing repeating calculations by interpolation}
+If a complex manipulation, like matrix inverse, is contained in a loop,
+we can take the matrix inverse out of loop, and replace it with an interpolation of inversed matrice calculated earlier. Interpolating by
+\begin{equation}
+f(c) = \frac{f(a) - f(b)}{a-b}\times (c-a) + f(a).
+\end{equation}
+\subsection{$Tr[\Gamma_{Rq}D_{L\uparrow}(E)D_{L\uparrow}(E+\omega)\Gamma_{Rq}]$}
+
+
+
 
 
 
