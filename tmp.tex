@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{xcolor}
+\usepackage{CJKutf8}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{caption}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{a4paper,scale=0.8}
+
+\captionsetup{font={scriptsize}}
+
+\begin{CJK}{UTF8}{gbsn}
+\begin{document}
+\begin{equation}
+I_{s R}=\int d \omega \rho_{R}(\omega)\left(f_{R}(\omega)-f_{L}^{B}(\omega)\right) \int d E\left(f_{L \uparrow}(E)-f_{L \downarrow}(E+\omega)\right) \operatorname{Tr}[A(E, \omega)],
+\label{eq:final}
+\end{equation}
+\begin{equation}
+A(E, \omega)=\left[G_{d}^{r}(E) \Sigma_{R q}^{r}(\omega)+1\right] D_{L \uparrow}(E) D_{L \downarrow}(E+\omega)\left[1+\Sigma_{R q}^{a}(\omega) G_{d}^{a}(E)\right]\Gamma'.
+\end{equation}
+\section{Linear response regime($\Delta T\to 0$ limit)}
+In the limit of $\Delta T=T_{L}-T_{R} \to 0$, Eq. (\ref{eq:final}) can be reduced to a simpler form.
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{1}{e^{\beta_{R}\omega}-1} - \frac{1}{e^{\beta_{L}(\omega+\Delta\mu_{s})}-1} \\
+&= \frac{e^{\beta_{L}(\omega+\Delta\mu_{s})} - e^{\beta_{R}\omega}}{[e^{\beta_{R}\omega}-1][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} \\
+&= \frac{e^{\beta_{L}\omega}[e^{\beta_{L}\Delta\mu_{s}} - e^{(\beta_{R}-\beta_{L})\omega}]}{e^{\beta_{L}\omega}[e^{(\beta_{R}-\beta_{L})\omega}-e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} \\
+&= \frac{e^{\beta_{L}\Delta\mu_{s}} - e^{(\beta_{R}-\beta_{L})\omega}}{[e^{(\beta_{R}-\beta_{L})\omega}-e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]}.
+\end{split}
+\end{equation}
+Here $\Delta\mu_{s} = \mu_{\uparrow} - \mu_{\downarrow}$ as before, and $\beta_{R}-\beta_L = \frac{\Delta T}{k_{B}T_{L}T_{R}}$. In $\Delta T\to 0$ limit, $\beta_{R}-\beta_{L} \to 0$,
+\begin{equation}
+e^{(\beta_{R}-\beta_{L})\omega} = 1 + \omega\beta_{L}^{2} k_{B}\Delta T + O(\Delta T^{2}),
+\end{equation}
+then,
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{e^{\beta_{L}\Delta\mu_{s}} - 1} {[ 1 - e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} - \frac{\omega k_{B}\beta_{L}^{2} } {[ 1 - e^{-\beta_{L}\omega}] [e^{\beta_{L} (\omega+\Delta \mu_{s})}-1]}\Delta T. 
+\end{split}
+\end{equation}
+If further $\Delta\mu_{s} = 0$, we have
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= - \frac{\omega k_{B}\beta_{L}^{2}} {[ 1 - e^{-\beta_{L}\omega}] [e^{\beta_{L} \omega}-1]}\Delta T \\
+&=  - \frac{\omega k_{B}\beta_{L}^{2}} {2[\rm{cosh}(\beta_{L}\omega)-1]}\Delta T.
+\end{split}
+\end{equation}
+
+When freqency $\omega$ approaches zero,
+\begin{equation}
+  \begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= - \frac{\omega k_{B}\beta_{L}^{2}} {[ 1 - e^{-\beta_{L}\omega}] [e^{\beta_{L} \omega}-1]}\Delta T \\
+&\rightarrow - \frac{k_{B}\beta_{L}^{2}} {[e^{-\beta_{L}\omega}\beta_{L}] [e^{\beta_{L} \omega}\beta_{L}]}\Delta T \\
+&\rightarrow -k_{B} \Delta T \\
+  \end{split}
+\end{equation}
+
+% When $\Delta T = 0$, $\beta_{R} - \beta_{L} = 0$. The above equation reduces to
+% \begin{equation}
+% \begin{split}
+% f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{e^{\beta_{L}\Delta\mu_{s}} - 1} {[ 1 - e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]}. \\
+% \end{split}
+% \end{equation}
+% \[\bar\Gamma_R^0\]
+% \[\bar\Gamma_R^1\]
+% \[\bar\Gamma_R^2\]
+\end{CJK}
+\end{document}

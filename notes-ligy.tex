@@ -273,6 +273,7 @@ G_{d}^{>}=-i\left(G_{d}^{r} \Sigma_{R}^{r}+1\right) G_{L \uparrow}^{<} G_{L \dow
 
 \begin{equation}
 I_{s}= 2\rm{Re}\sum_{q} \int  \frac{dE}{2\pi}\operatorname{Tr}\left[\left(G_{d}^{>}-G_{d}^{<}\right) \Sigma_{R q}^{<}+G_{d}^{<}\left(\Sigma_{R q}^{a}-\Sigma_{R q}^{r}\right)\right]
+\label{eq:current1}
 \end{equation}
 
 We have
@@ -372,11 +373,28 @@ then
 Substitute in Eq. (\ref{eq:current1}), we get
 \begin{equation}
 I_{s R}=\int d \omega \rho_{R}(\omega)\left(f_{R}(\omega)-f_{L}^{B}(\omega)\right) \int d E\left(f_{L \uparrow}(E)-f_{L \downarrow}(E+\omega)\right) \operatorname{Tr}[A(E, \omega)],
+\label{eq:final}
 \end{equation}
 \begin{equation}
-A(E, \omega)=\left[G_{d}^{r}(E) \Sigma_{R q}^{r}(\omega)+1\right] D_{L \uparrow}(E) D_{L \downarrow}(E+\omega)\left[1+\Sigma_{R q}^{a}(\omega) G_{d}^{a}(E)\right].
+A(E, \omega)=\left[G_{d}^{r}(E) \Sigma_{R q}^{r}(\omega)+1\right] D_{L \uparrow}(E) D_{L \downarrow}(E+\omega)\left[1+\Sigma_{R q}^{a}(\omega) G_{d}^{a}(E)\right]\Gamma'.
 \end{equation}
-Above $\rho_{R}(\omega)$ comes from the magnon $q$ summation, is density of states of magnon lead, determined by magnon dispersion $\omega_{q}$. Note after taking $\rho$ out of $\Gamma_{R}(\omega)$, a block matrix is left in $A(E,\omega)$.
+Above $\rho_{R}(\omega)$ comes from the magnon $q$ summation, is density of states of magnon lead, determined by magnon dispersion $\omega_{q}$. Note after taking $\rho$ out of $\Gamma_{R}(\omega)$, a block matrix $\Gamma'$ is left in $A(E,\omega)$.
+\begin{equation}
+\Gamma' = \left[\begin{array}{cccc}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & I_{n_{\rm{wid}}\times n_{\rm{wid}}}}
+\end{array}\right],
+\end{equation}
+where $I_{n_{\rm{wid}}\times n_{\rm{wid}}}$ is the unitary matrix of size $n_{\rm{wid}}\times n_{\rm{wid}}$. We have
+\begin{equation}
+\Gamma' = \Gamma' \Gamma',
+\end{equation}
+so
+\begin{equation}
+\rm{Tr}[A] \simeq Tr[D\bar{D}\Gamma'] \simeq Tr[\Gamma' D\bar{D} \Gamma'].
+\end{equation}
 \subsection{Spin current from the left lead}
 Define spin density operator
 \begin{equation}
@@ -392,6 +410,55 @@ I_{\sigma}=\operatorname{Tr}\left[\left(G_{d \sigma}^{r}-G_{d \sigma}^{a}\right)
 \left[G_{d \sigma}\right]_{n m}=-i\left\langle T_{c} S d_{n \sigma} d_{m \sigma}^{\dagger}\right\rangle
 \end{equation}
 the factor of 1/2 comes from spin of electron while spin of magnon is 1. Considering the continious condition of current, we should have relation $I_{L} + I_{R} = 0$.
+
+
+
+
+
+\section{Linear response regime($\Delta T\to 0$ limit)}
+In the limit of $\Delta T=T_{L}-T_{R} \to 0$, Eq. (\ref{eq:final}) can be reduced to a simpler form.
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{1}{e^{\beta_{R}\omega}-1} - \frac{1}{e^{\beta_{L}(\omega+\Delta\mu_{s})}-1} \\
+&= \frac{e^{\beta_{L}(\omega+\Delta\mu_{s})} - e^{\beta_{R}\omega}}{[e^{\beta_{R}\omega}-1][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} \\
+&= \frac{e^{\beta_{L}\omega}[e^{\beta_{L}\Delta\mu_{s}} - e^{(\beta_{R}-\beta_{L})\omega}]}{e^{\beta_{L}\omega}[e^{(\beta_{R}-\beta_{L})\omega}-e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} \\
+&= \frac{e^{\beta_{L}\Delta\mu_{s}} - e^{(\beta_{R}-\beta_{L})\omega}}{[e^{(\beta_{R}-\beta_{L})\omega}-e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]}.
+\end{split}
+\end{equation}
+Here $\Delta\mu_{s} = \mu_{\uparrow} - \mu_{\downarrow}$ as before, and $\beta_{R}-\beta_L = \frac{\Delta T}{k_{B}T_{L}T_{R}}$. In $\Delta T\to 0$ limit, $\beta_{R}-\beta_{L} \to 0$,
+\begin{equation}
+e^{(\beta_{R}-\beta_{L})\omega} = 1 + \omega\beta_{L}^{2} k_{B}\Delta T + O(\Delta T^{2}),
+\end{equation}
+then,
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{e^{\beta_{L}\Delta\mu_{s}} - 1} {[ 1 - e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]} - \frac{\omega k_{B}\beta_{L}^{2} } {[ 1 - e^{-\beta_{L}\omega}] [e^{\beta_{L} (\omega+\Delta \mu_{s})}-1]}\Delta T. 
+\end{split}
+\end{equation}
+If further $\Delta\mu_{s} = 0$, we have
+\begin{equation}
+\begin{split}
+f_{R}(\omega)-f_{L}^{B}(\omega) &= - \frac{\omega k_{B}\beta_{L}^{2}} {[ 1 - e^{-\beta_{L}\omega}] [e^{\beta_{L} \omega}-1]}\Delta T \\
+&=  - \frac{\omega k_{B}\beta_{L}^{2}} {2[\rm{cosh}(\beta_{L}\omega)-1]}\Delta T
+\end{split}
+\end{equation}
+
+% When $\Delta T = 0$, $\beta_{R} - \beta_{L} = 0$. The above equation reduces to
+% \begin{equation}
+% \begin{split}
+% f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{e^{\beta_{L}\Delta\mu_{s}} - 1} {[ 1 - e^{-\beta_{L}\omega}][e^{\beta_{L}(\omega+\Delta\mu_{s})}-1]}. \\
+% \end{split}
+% \end{equation}
+\section{Tight-binding method}
+Tight-binding coupling $t$ is 
+\[
+t = \frac{\hbar^{2}}{2ma^{2}},
+\]
+in which $m$ is the effective mass of election in the lattice, assuming $m=0.08m_{e}$, which is mass of electron. $a$ is lattice distance. $\hbar = 1.0545e-34J\cdot s, m_e = 9.10938370e-31\rm{kg}$, so $t$ is in unit of $J$.
+
+Boltzman constant $k_B = 1.3806504^{-23}J/K, e = 1.602176634^{-19}C, \hbar = 1.0545e-34J\cdot s, m_e = 9.10938370e-31\rm{kg}$
+
+
 \section{Transportation in a electron wave guide}
 An electron wave guide is a device analogous to light wave guide, in which only small number of electron wave modes can propagate. Reference to exercise 1.3 and 1.4 in S. Datta's book. For case one, in y direction, the wave guide is constrained in a hard-well potential. $U(y < -W/2) = U(y > W/2) = \infty, U(-W/2 < y < W/2) = 0$, leads to the quantization of electron states.
 \begin{equation}
@@ -513,7 +580,7 @@ Here $G_{ij}^{r}$ is a $3\times 3$ matrix in full matrix G$^{r}$ of dimension $1
 \begin{equation}
 Tr[A(E, \omega)] = \sum_{i}G_{41}^{r}\Gamma_{3\times3}^{L}[G^{r}]_{1i}^{\dag} G^{r}_{i1}\Gamma_{3\times3}^{L}[G^{r}]_{14}^{\dag}.
 \end{equation}
-
+\subsection{interpolate on $Tr[A(E,\omega)$]}
 
 
 
