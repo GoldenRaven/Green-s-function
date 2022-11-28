@@ -483,16 +483,38 @@ f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega) &= \frac{1}{e^{\beta_{L}(E-\mu_{L\upa
 \end{split}
 \end{equation}
 \subsection{linear response regime}
-
+In summary, we have
 \begin{equation}
 \begin{split}
 f_{R}(\omega)-f_{L}^{B}(\omega) &= \frac{-\omega k_B\beta^2\Delta T + \beta\Delta\mu_s}{2[\rm{cosh}(\beta_{L}\omega)-1]}
 \end{split}
 \end{equation}
-When $\omega\to0$,
+Additionally, when $\omega\to0$,
 \[
-\lim_{\omega\to0}\omega[f_{R}(\omega)-f_{L}^{B}(\omega)] = \frac{1}{\beta_R} - 0.
+\lim_{\omega\to0}\omega f_{R}(\omega) = \frac{\omega}{e^{\beta_{R}\omega}-1} = \frac{1}{\beta_R}.
 \]
+(1) For $\Delta\mu_s=0$, when $\omega\to0$,
+\[
+\lim_{\omega\to0}\omega f_{L}^{B}(\omega) = \frac{\omega}{e^{\beta_{L}(\omega+\Delta\mu_{s})}-1} = \frac{1}{\beta_L}.
+\]
+Then for $\Delta\mu_s=0$ and limits $\Delta T\to 0$, $\omega\to 0$,
+\begin{equation}
+\begin{split}
+\omega[f_{R}(\omega)-f_{L}^{B}(\omega)] &= \frac{1}{\beta_R} - \frac{1}{\beta_L} \\
+& = -k_B \Delta T.
+\end{split}
+\end{equation}
+(2) For $\Delta T=0$, when $\omega\to0$ and $\Delta\mu_s\to 0$,
+\[
+\lim_{\omega\to0}\omega f_{L}^{B}(\omega) = \frac{\omega}{e^{\beta_{L}(\omega+\Delta\mu_{s})}-1} = \frac{1}{\beta_L e^{\beta_L \Delta\mu_s}}.
+\]
+Then for $\Delta T=0$ and limits $\Delta \mu_s\to 0$, $\omega\to 0$,
+\begin{equation}
+\begin{split}
+\omega[f_{R}(\omega)-f_{L}^{B}(\omega)] &= \frac{1}{\beta_R} - \frac{1}{\beta_Le^{\beta_L \Delta\mu_s}} 
+\end{split}
+\end{equation}
+
 There is no singularity in the spin current integration if the $\omega$ in $\Gamma_R$ is combined with Boson distribution.
 \section{Tight-binding method}
 Tight-binding coupling $t$ is 
