@@ -323,9 +323,8 @@ G_{d}^>(E)- G_{d}^<(E)&&= -i(G^r_{d}\Sigma^r_{Rq} +1) (G^<_{L\uparrow}G^>_{L\dow
 in which, $G^<_{L\sigma}=G^r_{L\sigma}\Sigma_{L\sigma}^{<}G^a_{L\sigma} = i G^r_{L\sigma}\Gamma_{L\sigma}f_{L\sigma}  G^a_{L\sigma} \equiv iD_{L\sigma}f_{L\sigma}$ and 
 \begin{equation}
 \begin{split}
-G_{L\sigma}^{>}(E) &= -(G_{L\sigma}^{<}(E))^{\dag} \\
-&= G_{L\sigma}^{r}(E)\Sigma_{L\sigma}^{>}(E) G_{L\sigma}^{a}(E)\\
-&=iD_{L\sigma}(f_{L\uparrow}(E) - 1)
+G_{L\sigma}^{>}(E) &= G_{L\sigma}^{r}(E)\Sigma_{L\sigma}^{>}(E) G_{L\sigma}^{a}(E)\\
+&=iD_{L\sigma}(f_{L\sigma}(E) - 1)
 \end{split}
 \end{equation}
 where, $\Sigma_{L\sigma}^{>} = i(f_{L\sigma}-1)\Gamma_{L\sigma}$. Hence,
@@ -384,7 +383,7 @@ After taking care of the sign, we find
 G_{d\uparrow}(\tau,\tau') &&= g_{d\uparrow}(\tau,\tau') + \sum_q  g_{d\uparrow}(\tau,\tau_1) [ig_{d\downarrow}(\tau_1,\tau_2)\Sigma_{Rq}(\tau_2,\tau_1)] g_{d\uparrow}(\tau_2,\tau') +... \nonumber \\
 &&=g_{d\uparrow}(\tau,\tau') +\sum_q  g_{d\uparrow}(\tau,\tau_1) [ig_{d\downarrow}(\tau_1,\tau_2)\Sigma_{Rq}(\tau_2,\tau_1)] G_{d\uparrow}(\tau_2,\tau') \nonumber
 \end{eqnarray}
-When both leads are present, we have
+When both leads are present, we add left lead self-energy to $g_{d\sigma}$, then we have
 \begin{eqnarray}
 G_{d\uparrow}(\tau,\tau') =G_{L\uparrow}(\tau,\tau') + G_{L\uparrow}(\tau,\tau_1) i\sum_q G_{L\downarrow}(\tau_1,\tau_2)\Sigma_{Rq}(\tau_2,\tau_1) G_{L\uparrow}(\tau_2,\tau') \label{relation4}
 \end{eqnarray}
@@ -425,7 +424,7 @@ G^a_{d\sigma}) +i G^r_{d\sigma} \sum_q G^<_{L\bar\sigma}\Sigma_{Rq}^> G^a_{d\sig
 G^>_{d\sigma} =(G^r_{d\sigma}{\bar \Sigma}_{R\sigma}^r+1) G^>_{L\sigma} (1+{\bar \Sigma}_{R\sigma}^a
 G^a_{d\sigma}) +i G^r_{d\sigma} \sum_q G^>_{L\bar\sigma}\Sigma_{Rq}^< G^a_{d\sigma} \nonumber.
 \end{gather}
-As before, the down spin spectra of $H_L$ and QD are shifted in the expression of $G^<$ and $G^>$.
+As before, the spin $\bar\sigma$ spectra of $H_L$ and QD are shifted in the expression of $G^<$ and $G^>$.
 
 {\noindent \bf{\textit{DC spin current from the left lead}}} -- Since there is no charge current in the left lead, we should have $I_\uparrow= -I_\downarrow$. In energy domain,
 \begin{eqnarray}
@@ -450,10 +449,11 @@ Then the current for spin-up is given by
 G^a_{d\uparrow}) +i G^r_{d\uparrow} \sum_q D_{L\downarrow}f_{L\downarrow}(f_R+1)\Gamma_R G^a_{d\uparrow}]\Gamma_{L\uparrow} \\
 &= (G^r_{d\uparrow}{\bar \Sigma}_{R\uparrow}^r+1) D_{L\uparrow} (1+{\bar \Sigma}_{R\uparrow}^a G^a_{d\uparrow})f_{L\uparrow}\Gamma_{L\uparrow} + G^r_{d\uparrow} \sum_q [D_{L\downarrow}(f_{L\downarrow}+f_{R})\Gamma_{R}] G^a_{d\uparrow} f_{L\uparrow}\Gamma_{L\uparrow} \\
 &\quad - (G^r_{d\uparrow}{\bar \Sigma}_{R\uparrow}^r+1) D_{L\uparrow} (1+{\bar \Sigma}_{R\uparrow}^a G^a_{d\uparrow}) f_{L\uparrow}\Gamma_{L\uparrow} - G^r_{d\uparrow} \sum_q D_{L\downarrow}f_{L\downarrow}(f_R+1)\Gamma_R G^a_{d\uparrow} \Gamma_{L\uparrow} \\
-& =\sum_q [(f_{L\uparrow}-1)f_{L\downarrow} + f_R(f_{L\uparrow}-f_{L\downarrow})] \times G^r_{d\uparrow} (D_{L\downarrow} \Gamma_{Rq}) G^a_{d\uparrow}\Gamma_{L\uparrow}.
+& =\sum_q [(f_{L\uparrow}-1)f_{L\downarrow} + f_R(f_{L\uparrow}-f_{L\downarrow})] \times G^r_{d\uparrow} (D_{L\downarrow} \Gamma_{Rq}) G^a_{d\uparrow}\Gamma_{L\uparrow} \\
+& =\sum_q \{[f_{L\uparrow}(E)-1]f_{L\downarrow}(E+\omega) + f_R(\omega)[f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega)]\} \times G^r_{d\uparrow} (D_{L\downarrow} \Gamma_{Rq}) G^a_{d\uparrow}\Gamma_{L\uparrow}.
 \end{split}
 \end{equation}
-\textcolor{blue}{
+\textcolor{gray}{
 If we take $\Sigma_R^{>}=i(f_R-1)\Gamma_R, \Sigma_R^{<}=if_R\Gamma_R$, we find
 \begin{equation}
 G^>_{d\sigma} - G^<_{d\sigma} = (G^r_{d\sigma}{\bar \Sigma}_{R\sigma}^r+1) (-iD_{L\sigma}) (1+{\bar \Sigma}_{R\sigma}^a
@@ -467,10 +467,15 @@ Then the current for spin-up is given by
 &\quad - (G^r_{d\uparrow}{\bar \Sigma}_{R\uparrow}^r+1) D_{L\uparrow} (1+{\bar \Sigma}_{R\uparrow}^a G^a_{d\uparrow}) f_{L\uparrow}\Gamma_{L\uparrow} + G^r_{d\uparrow} \sum_q D_{L\downarrow}f_{L\downarrow}(f_R-1)\Gamma_R G^a_{d\uparrow} \Gamma_{L\uparrow} \\
 & =\sum_q [(f_{L\uparrow}-1)f_{L\downarrow} - f_R(f_{L\uparrow}-f_{L\downarrow})] \times G^r_{d\uparrow} (D_{L\downarrow} \Gamma_{Rq}) G^a_{d\uparrow}\Gamma_{L\uparrow}.
 \end{split}
-\end{equation}}
-Given $f_{L\sigma}(\epsilon) = 1/[\exp(\beta_L (\epsilon-\mu_\sigma))+1]$, we have the identity $(f_{L\uparrow}-1)f_{L\downarrow}= -(f_{L\uparrow}-f_{L\downarrow})f^B_L$. Hence
+\end{equation}
+Then we have, which is wrong,
+\begin{eqnarray}
+I_\uparrow = -\int d\omega \rho_R(\omega) (f^B_R(\omega)+f^B_L(\omega))\int dE (f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega)) {\rm Tr}[A(E,\omega)]\quad \rm X
+\end{eqnarray}}
+
+Given $f_{L\sigma}(\epsilon) = 1/[\exp(\beta_L (\epsilon-\mu_\sigma))+1]$, we have the identity $(f_{L\uparrow}(E)-1)f_{L\downarrow}(E+\omega)= -(f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega))f^B_L$. Hence
 \begin{eqnarray}\label{eq:Iup}
-I_\uparrow = -\int d\omega \rho_R(\omega) (f^B_R(\omega)-f^B_L(\omega))\int dE (f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega)) {\rm Tr}[A(E,\omega)] \label{spin5}
+I_\uparrow = \int d\omega \rho_R(\omega) (f_R(\omega)-f^B_L(\omega))\int dE (f_{L\uparrow}(E)-f_{L\downarrow}(E+\omega)) {\rm Tr}[A(E,\omega)] \label{spin5}
 \end{eqnarray}
 where
 \begin{eqnarray}
@@ -487,11 +492,21 @@ For $I_\downarrow$, we have
 \begin{equation}
 \begin{split}
 &\quad\int dE [(G_{d\downarrow}^>-G_{d\downarrow}^< )\Sigma_{L\downarrow}^< +G_{d\downarrow}^< (\Sigma_{L\downarrow}^a-\Sigma_{L\downarrow}^r)]= \int (G^r_{d\downarrow}{\bar \Sigma}_{R\downarrow}^r+1) D_{L\downarrow} (1+{\bar \Sigma}_{R\downarrow}^a G^a_{d\downarrow})f_{L\downarrow}\Gamma_{L\downarrow} \\
-&- G^r_{d\downarrow} \sum_q [D_{L\uparrow}(f_{L\uparrow}-f_{R})\Gamma_{R}] G^a_{d\downarrow} f_{L\downarrow}\Gamma_{L\downarrow} - (G^r_{d\downarrow}{\bar \Sigma}_{R\downarrow}^r+1) D_{L\downarrow} (1+{\bar \Sigma}_{R\downarrow}^a G^a_{d\downarrow}) f_{L\downarrow}\Gamma_{L\downarrow} \\
-&- G^r_{d\downarrow} \sum_q D_{L\uparrow}f_{L\uparrow}(f_R+1)\Gamma_R G^a_{d\downarrow} \Gamma_{L\downarrow} \\
-& =-\int\sum_q [(f_{L\downarrow}+1)f_{L\uparrow} - f_R(f_{L\downarrow}-f_{L\uparrow})] \times G^r_{d\downarrow} (D_{L\uparrow} \Gamma_{Rq}) G^a_{d\downarrow}\Gamma_{L\downarrow} 
+&+ G^r_{d\downarrow}  [D_{L\uparrow}(f_{L\uparrow}+f_{R})\Gamma_{R}] G^a_{d\downarrow} f_{L\downarrow}\Gamma_{L\downarrow} - (G^r_{d\downarrow}{\bar \Sigma}_{R\downarrow}^r+1) D_{L\downarrow} (1+{\bar \Sigma}_{R\downarrow}^a G^a_{d\downarrow}) f_{L\downarrow}\Gamma_{L\downarrow} \\
+&- G^r_{d\downarrow}  D_{L\uparrow}f_{L\uparrow}(f_R+1)\Gamma_R G^a_{d\downarrow} \Gamma_{L\downarrow} \\
+&= \int G^r_{d\downarrow}  [D_{L\uparrow}^{+}(f_{L\uparrow}^{+}+f_{R})\Gamma_{R}] G^a_{d\downarrow} f_{L\downarrow}\Gamma_{L\downarrow} - G^r_{d\downarrow}  D_{L\uparrow}^{+}f_{L\uparrow}^{+}(f_R+1)\Gamma_R G^a_{d\downarrow} \Gamma_{L\downarrow} \\
+&= \int G^r_{d\downarrow} D_{L\uparrow}^{+}[(f_{L\uparrow}^{+}+f_{R})f_{L\downarrow} - f_{L\uparrow}^{+}(f_R+1)]\Gamma_{R} G^a_{d\downarrow} \Gamma_{L\downarrow} \\
+&= \int G^r_{d\downarrow} D_{L\uparrow}^{+}[f_{L\uparrow}^{+}(f_{L\downarrow}-1)+f_{R}(f_{L\downarrow}- f_{L\uparrow}^{+})]\Gamma_{R} G^a_{d\downarrow} \Gamma_{L\downarrow}.
 \end{split}
 \end{equation}
+In the above equation, we have used the superscript $+$ to denote the independent variable $E+\omega$, and independent variables $E$ and $\omega$ are omitted otherwise. Again, using $(f-1)f^+= -(f-f^+)f^B_L$ and $\Delta \mu=\mu_\uparrow-\mu_\downarrow=0$, we have
+\begin{equation}
+I_{\downarrow} =\int d\omega \rho_R(\omega) (f_R(\omega)-f^B_L(\omega))\int dE (f_{L\downarrow}(E)-f_{L\uparrow}(E+\omega)) {\rm Tr}[A(E,\omega)] ,
+\end{equation}
+with
+\begin{eqnarray}
+A(E,\omega)= G^r_{d\downarrow}(E) D_{L\uparrow}(\bar E) \Gamma_{Rq}(\omega) G^a_{d\downarrow}(E)\Gamma_{L\downarrow}(E).
+\end{eqnarray}
 Note that the up spin spectra of QD and left lead are shifted down so that after transformation from $E$ to $E+\omega$, $G_\uparrow$, $\Sigma_\uparrow$, and $f_\uparrow$ will be transformed to $G_\downarrow$, $\Sigma_\downarrow$, and $f_\downarrow$, respectively. Hence $I_\uparrow = I_\downarrow$ and $I_{sL} = I_\uparrow$. It is easy to see that up to the 2nd order in $J_q$, the spin current is conserved, i.e., we have $I_{sL} + I_{sR}=0$.
 
 We now verify that Eq.~(\ref{eq:Iup}) is equivelant to Eq.~(10) in PRB 106, 205303 (2022). First note that Eq.~(16) in the PRB is the above Eq.~(\ref{eq:Iup}). Eq.~(\ref{eq:Iup}) can be transformed from Eq.~(12) in the PRB (see Ligy's note for derivation). Moreover, Eq.~(12) can be transformed from Eq.~(11).
@@ -1301,7 +1316,7 @@ t = \frac{\hbar^{2}}{2ma^{2}},
 in which $m$ is the effective mass of election in the lattice, assuming $m=0.08m_{e}$, which is mass of electron. $a$ is lattice distance. $\hbar = 1.0545e-34J\cdot s, m_e = 9.10938370e-31\rm{kg}$, so $t$ is in unit of $J$.
 
 Boltzman constant $k_B = 1.3806504^{-23}J/K, e = 1.602176634^{-19}C, \hbar = 1.0545e-34J\cdot s, m_e = 9.10938370e-31\rm{kg}$
-\subsection{Transportation in a electron wave guide} 
+\subsection{Transportation in a electron wave guide}
 An electron wave guide is a device analogous to light wave guide, in which only small number of electron wave modes can propagate. Reference to exercise 1.3 and 1.4 in S. Datta's book. For case one, in y direction, the wave guide is constrained in a hard-well potential. $U(y < -W/2) = U(y > W/2) = \infty, U(-W/2 < y < W/2) = 0$, leads to the quantization of electron states.
 \begin{equation}
 k_{y} = \frac{i\pi}{W}, \qquad \text{for i is integers.}
